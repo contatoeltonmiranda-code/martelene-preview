@@ -1,0 +1,2133 @@
+<!doctype html>
+<!--
+  Cliente: Dra. Martelene Carvalhaes - 12 Seminario Nacional de Tributacao e Legislacao da Construcao Civil
+  Data: 2026-05-18
+  Status: Preview v2 - linguagem visual do midia kit (blobs, wireframe arquitetonico, numeros gigantes, sentence case)
+  Stack: HTML single-file + Google Fonts (Montserrat only)
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12º Seminário Nacional de Tributação e Legislação da Construção Civil | Dra. Martelene Carvalhaes</title>
+<meta name="description" content="22 e 23 de outubro de 2026 em São Paulo. Presencial e online. Imersão técnica sobre reforma tributária, IBS, CBS, Split Payment e impactos na construção civil.">
+<meta property="og:title" content="12º Seminário Nacional de Tributação e Legislação da Construção Civil">
+<meta property="og:description" content="22 e 23 de outubro de 2026. Coordenação: Dra. Martelene Carvalhaes.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ouro:#C49A3C;
+  --ouro-claro:#D9B560;
+  --teal-claro:#5FB5CC;
+  --teal:#02738C;
+  --teal-escuro:#015971;
+  --azul-profundo:#102932;
+  --off-white:#EAE7E4;
+  --quase-preto:#1D1210;
+  --cinza:#828282;
+  --cinza-claro:#bdbdbd;
+  --branco:#ffffff;
+
+  --ff-titulo:'Montserrat', system-ui, -apple-system, sans-serif;
+  --ff-corpo:'Montserrat', system-ui, -apple-system, sans-serif;
+
+  --container:1180px;
+  --gap-secao:60px;
+  --gap-secao-mob:36px;
+
+  --r-sm:6px;
+  --r-md:14px;
+  --r-lg:20px;
+  --r-xl:32px;
+  --r-blob:120px;
+  --shadow-md:0 14px 38px rgba(16,41,50,.10);
+  --shadow-lg:0 28px 72px rgba(16,41,50,.20);
+}
+
+/* ============ RESET BASICO ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--ff-corpo);
+  font-weight:400;
+  font-size:16px;
+  line-height:1.65;
+  color:var(--quase-preto);
+  background:var(--off-white);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;height:auto}
+a{color:var(--teal);text-decoration:none}
+a:hover{color:var(--teal-escuro)}
+button{font-family:inherit;cursor:pointer;border:none}
+h1,h2,h3,h4{font-family:var(--ff-titulo);font-weight:700;line-height:1.18;color:var(--azul-profundo);margin:0 0 .6em;letter-spacing:-0.02em}
+h1{font-weight:700;letter-spacing:-0.025em}
+h2{font-weight:700;letter-spacing:-0.02em}
+h3{font-weight:600;letter-spacing:-0.01em}
+h4{font-weight:600;letter-spacing:0}
+p{margin:0 0 1em}
+
+.container{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 24px;
+  position:relative;
+}
+.eyebrow{
+  font-family:var(--ff-corpo);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:20px;
+}
+.eyebrow--gold{color:var(--ouro)}
+.section{padding:var(--gap-secao) 0;position:relative;overflow:hidden}
+.section--dark{background:var(--azul-profundo);color:var(--off-white)}
+.section--dark h2,.section--dark h3,.section--dark h4{color:var(--branco)}
+.section--dark .eyebrow{color:var(--ouro-claro)}
+.section--cream{background:var(--off-white)}
+.section--white{background:var(--branco)}
+.section--teal{background:var(--teal);color:var(--off-white)}
+.section--teal h2,.section--teal h3,.section--teal h4{color:var(--branco)}
+.section--teal .eyebrow{color:var(--ouro-claro)}
+
+.h-display{font-size:clamp(2.2rem, 4.2vw, 3.6rem)}
+.h-1{font-size:clamp(1.9rem, 3.4vw, 2.8rem)}
+.h-2{font-size:clamp(1.5rem, 2.4vw, 2rem)}
+.h-3{font-size:clamp(1.2rem, 1.8vw, 1.4rem)}
+
+.lead{font-size:1.125rem;line-height:1.7;color:var(--azul-profundo)}
+.muted{color:var(--cinza)}
+.divider{
+  width:80px;height:3px;background:var(--teal);margin:0 0 28px;border-radius:2px;
+  position:relative;
+}
+.divider::after{
+  content:"";position:absolute;left:0;top:0;width:24px;height:3px;background:var(--ouro);border-radius:2px;
+}
+.divider--center{margin-left:auto;margin-right:auto}
+
+/* ============ WIREFRAME ARQUITETONICO SVG ============ */
+.wireframe-bg{
+  position:absolute;pointer-events:none;
+  color:var(--ouro);
+}
+
+/* ============ NUMEROS GIGANTES ============ */
+.bignum{
+  font-family:var(--ff-titulo);font-weight:800;
+  letter-spacing:-0.05em;line-height:.9;
+  color:var(--ouro);
+}
+
+/* ============ BOTOES — PADRAO PREMIUM ============ */
+/* Todos os CTAs adotam pill + shimmer + sombras em camadas + seta animada.
+   .btn-premium e a base; variantes apenas sobrescrevem cor/borda/glow. */
+.btn{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  padding:18px 44px;
+  font-family:var(--ff-corpo);font-weight:700;font-size:14px;
+  letter-spacing:.12em;text-transform:uppercase;
+  border:none;
+  border-radius:999px;
+  text-align:center;line-height:1.2;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  cursor:pointer;
+}
+.btn::before{
+  content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(120deg,transparent 0%,rgba(255,255,255,0.35) 50%,transparent 100%);
+  pointer-events:none;transition:left .7s ease;
+  z-index:0;
+}
+.btn:hover::before{left:100%}
+.btn > *{position:relative;z-index:1}
+.btn__icon{
+  width:18px;height:18px;flex-shrink:0;
+  stroke-width:2;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
+  transition:transform .25s ease;
+}
+.btn:hover .btn__icon{transform:translateX(4px)}
+.btn:active{transform:translateY(0)}
+.btn:focus-visible{outline:2px solid #C49A3C;outline-offset:4px}
+
+/* PRIMARY — OURO (CTA principal, com pulse idle) */
+.btn--primary{
+  background:linear-gradient(135deg,#D4A847 0%,#C49A3C 45%,#A8801F 100%);
+  color:#102932;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.15),
+    0 8px 24px rgba(196,154,60,0.35),
+    0 4px 12px rgba(16,41,50,0.4);
+  animation:ambient-pulse 3s ease-in-out infinite;
+}
+.btn--primary .btn__icon{stroke:#102932}
+.btn--primary:hover{
+  color:#102932;
+  transform:translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.18),
+    0 12px 32px rgba(196,154,60,0.5),
+    0 6px 16px rgba(16,41,50,0.45);
+  animation:none;
+}
+
+/* TEAL — fundo claro/branco (CTA principal sobre claro) */
+.btn--teal{
+  background:linear-gradient(135deg,#02b0c8 0%,#02738C 50%,#015a6e 100%);
+  color:var(--off-white);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -1px 0 rgba(0,0,0,0.20),
+    0 8px 24px rgba(2,115,140,0.4),
+    0 4px 12px rgba(16,41,50,0.35);
+  animation:ambient-pulse-teal 3s ease-in-out infinite;
+}
+.btn--teal .btn__icon{stroke:var(--off-white)}
+.btn--teal:hover{
+  color:var(--branco);
+  transform:translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    inset 0 -1px 0 rgba(0,0,0,0.25),
+    0 14px 36px rgba(2,115,140,0.55),
+    0 6px 16px rgba(16,41,50,0.45);
+  animation:none;
+}
+
+/* OUTLINE OURO — discreto, usa borda */
+.btn--outline-gold,
+.btn--ghost{
+  background:transparent;color:var(--ouro);
+  border:1.5px solid var(--ouro);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 6px 18px rgba(196,154,60,0.18),
+    0 2px 8px rgba(16,41,50,0.25);
+}
+.btn--outline-gold .btn__icon,
+.btn--ghost .btn__icon{stroke:var(--ouro)}
+.btn--outline-gold:hover,
+.btn--ghost:hover{
+  color:var(--ouro-claro);
+  border-color:var(--ouro-claro);
+  transform:translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    0 12px 28px rgba(196,154,60,0.32),
+    0 4px 12px rgba(16,41,50,0.32);
+}
+.btn--outline-gold:hover .btn__icon,
+.btn--ghost:hover .btn__icon{stroke:var(--ouro-claro)}
+
+/* GOLD SOLID — alias do primary (mantido por compat) */
+.btn--gold{
+  background:linear-gradient(135deg,#D4A847 0%,#C49A3C 45%,#A8801F 100%);
+  color:var(--quase-preto);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.15),
+    0 8px 24px rgba(196,154,60,0.35),
+    0 4px 12px rgba(16,41,50,0.4);
+}
+.btn--gold .btn__icon{stroke:var(--quase-preto)}
+.btn--gold:hover{
+  color:var(--quase-preto);
+  transform:translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -1px 0 rgba(0,0,0,0.18),
+    0 12px 32px rgba(196,154,60,0.5),
+    0 6px 16px rgba(16,41,50,0.45);
+}
+
+/* WHATSAPP — verde */
+.btn--whatsapp{
+  background:linear-gradient(135deg,#25D366 0%,#1ebe5d 50%,#128C7E 100%);
+  color:#fff;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    inset 0 -1px 0 rgba(0,0,0,0.18),
+    0 8px 24px rgba(37,211,102,0.38),
+    0 4px 12px rgba(16,41,50,0.32);
+}
+.btn--whatsapp .btn__icon{stroke:#fff}
+.btn--whatsapp:hover{
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.32),
+    inset 0 -1px 0 rgba(0,0,0,0.22),
+    0 14px 36px rgba(37,211,102,0.52),
+    0 6px 16px rgba(16,41,50,0.42);
+}
+
+.btn--lg{padding:22px 56px;font-size:15px;letter-spacing:.14em;gap:14px}
+.btn--lg .btn__icon{width:20px;height:20px}
+.btn--block{display:flex;width:100%}
+
+/* ============ HEADER / LOGOS ============ */
+.topbar{
+  background:var(--branco);
+  border-bottom:1px solid rgba(16,41,50,.08);
+  padding:16px 0;
+  position:sticky;top:0;z-index:50;
+  box-shadow:0 6px 18px rgba(2,115,140,.06);
+}
+.topbar__inner{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.logo-slot{
+  font-family:var(--ff-titulo);font-weight:600;font-style:italic;color:var(--azul-profundo);
+  font-size:13px;letter-spacing:.04em;
+  padding:8px 16px;border:1px dashed var(--cinza-claro);border-radius:99px;
+  background:#fff;
+}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;
+  background:
+    radial-gradient(120% 80% at 100% 0%, #5FB5CC 0%, rgba(95,181,204,.4) 30%, transparent 55%),
+    linear-gradient(135deg, var(--teal) 0%, var(--teal-escuro) 50%, var(--azul-profundo) 100%);
+  color:var(--off-white);
+  padding:70px 0 65px;
+  overflow:hidden;
+  text-align:center;
+}
+.hero__blob{
+  position:absolute;
+  top:-15%;right:-15%;
+  width:65%;height:130%;
+  background:
+    linear-gradient(90deg, var(--teal) 0%, rgba(2,115,140,.6) 35%, transparent 75%),
+    radial-gradient(circle at 30% 40%, rgba(95,181,204,.55) 0%, rgba(95,181,204,.15) 45%, transparent 70%),
+    url("assets/seminario-01.jpg") center/cover no-repeat;
+  background-blend-mode:normal, overlay, normal;
+  border-bottom-left-radius:60% 40%;
+  border-top-left-radius:50% 30%;
+  pointer-events:none;
+  opacity:.92;
+}
+@media (max-width:768px){
+  .hero__blob{opacity:.4}
+}
+.hero__wireframe{
+  position:absolute;
+  right:-8%;top:50%;transform:translateY(-50%);
+  width:72%;max-width:920px;
+  opacity:.16;
+  pointer-events:none;
+  color:var(--ouro);
+}
+.hero__wireframe--left{
+  right:auto;left:-12%;top:auto;bottom:-10%;transform:none;
+  width:50%;max-width:520px;
+  opacity:.09;
+}
+.hero .container{max-width:1180px;position:relative;z-index:2}
+.hero__edition{
+  display:block;margin:0 auto 36px;max-width:320px;width:100%;height:auto;
+}
+.hero h1{
+  color:var(--branco);
+  font-family:var(--ff-titulo);
+  font-weight:700;
+  letter-spacing:-0.025em;
+  font-size:clamp(2rem, 4vw, 3.4rem);
+  line-height:1.12;
+  margin-bottom:28px;
+  max-width:1180px;
+  margin-left:auto;margin-right:auto;
+  text-wrap:pretty;
+}
+.hero__evento{
+  font-family:var(--ff-titulo);
+  color:var(--ouro-claro);
+  font-size:clamp(1rem,1.4vw,1.15rem);
+  font-style:italic;font-weight:500;
+  letter-spacing:.02em;
+  margin-bottom:32px;
+  max-width:760px;margin-left:auto;margin-right:auto;
+}
+.hero__sub{
+  max-width:760px;
+  margin:0 auto 16px;
+  font-size:1.05rem;line-height:1.75;
+  color:rgba(234,231,228,.92);
+  letter-spacing:.005em;
+}
+.hero__apoio{
+  max-width:1040px;margin:0 auto 44px;font-size:.98rem;line-height:1.75;
+  color:rgba(234,231,228,.72);
+  text-wrap:balance;
+}
+.hero__meta{
+  display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;
+  gap:8px 14px;
+  padding:24px 0;
+  margin:0 auto 36px;
+  max-width:1200px;
+  border-top:1px solid rgba(196,154,60,.25);
+  border-bottom:1px solid rgba(196,154,60,.25);
+}
+.hero__meta__item{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--ff-corpo);font-weight:500;font-size:13px;
+  color:rgba(234,231,228,.85);
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+.hero__meta__item svg{
+  width:18px;height:18px;flex-shrink:0;
+  stroke:var(--ouro);stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
+}
+.hero__meta__sep{
+  color:rgba(196,154,60,.55);font-size:14px;line-height:1;
+  user-select:none;
+}
+.hero__ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+/* Hero hero: usa .btn .btn--primary; min-width para destaque */
+.btn--hero-primary{min-width:380px}
+@keyframes ambient-pulse{
+  0%,100%{box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.15),
+    0 8px 24px rgba(196,154,60,0.35),
+    0 4px 12px rgba(16,41,50,0.4);}
+  50%{box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -1px 0 rgba(0,0,0,0.15),
+    0 12px 32px rgba(196,154,60,0.5),
+    0 4px 12px rgba(16,41,50,0.4);}
+}
+@keyframes ambient-pulse-teal{
+  0%,100%{box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -1px 0 rgba(0,0,0,0.20),
+    0 8px 24px rgba(2,115,140,0.40),
+    0 4px 12px rgba(16,41,50,0.35);}
+  50%{box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -1px 0 rgba(0,0,0,0.20),
+    0 12px 32px rgba(2,115,140,0.55),
+    0 4px 12px rgba(16,41,50,0.35);}
+}
+
+/* ============ MARQUEE ============ */
+.marquee{
+  overflow:hidden;
+  background:linear-gradient(90deg,#015a6e,#02738C,#015a6e);
+  border-top:1px solid rgba(196,154,60,.3);
+  border-bottom:1px solid rgba(196,154,60,.3);
+  padding:18px 0;
+}
+.marquee__track{
+  display:flex;align-items:center;gap:36px;
+  width:max-content;
+  animation:marquee-scroll 35s linear infinite;
+}
+.marquee__item{
+  font-family:'Montserrat',sans-serif;
+  font-weight:600;text-transform:uppercase;
+  letter-spacing:.15em;font-size:19px;
+  color:var(--off-white);white-space:nowrap;
+}
+.marquee__sep{
+  color:var(--ouro);
+  font-size:14px;
+  flex-shrink:0;
+}
+@keyframes marquee-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@media (prefers-reduced-motion: reduce){
+  .marquee__track{animation:none}
+}
+
+/* ============ VIDEO CAMADA 1 ============ */
+.video-section{padding:var(--gap-secao) 0;background:var(--branco);position:relative;overflow:hidden}
+.video-section::before{
+  content:"";position:absolute;
+  top:-10%;left:-10%;width:45%;height:50%;
+  background:radial-gradient(circle, rgba(95,181,204,.08) 0%, transparent 70%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.video-wrap{
+  max-width:920px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.video-intro{
+  text-align:center;font-style:italic;
+  font-family:var(--ff-titulo);font-weight:500;font-size:clamp(1.15rem,1.8vw,1.45rem);
+  color:var(--azul-profundo);
+  max-width:720px;margin:0 auto 44px;
+  line-height:1.5;letter-spacing:-0.01em;
+}
+.video-player{
+  position:relative;aspect-ratio:16/9;
+  background:
+    linear-gradient(135deg, rgba(2,115,140,.85), rgba(16,41,50,.92)),
+    url('https://images.unsplash.com/photo-1589216532372-1c2a367900d9?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  border-radius:var(--r-xl);
+  box-shadow:var(--shadow-lg);
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  border:1px solid rgba(196,154,60,.3);
+}
+.video-player__label{
+  position:absolute;top:24px;left:24px;
+  font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--off-white);background:rgba(2,115,140,.7);
+  padding:7px 14px;border-radius:99px;
+  border:1px solid rgba(196,154,60,.4);font-weight:600;
+}
+.video-player__play{
+  width:96px;height:96px;border-radius:50%;
+  background:var(--teal);color:var(--branco);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 20px 50px rgba(2,115,140,.55);
+  transition:transform .25s ease;
+  border:3px solid var(--ouro);
+}
+.video-player:hover .video-player__play{transform:scale(1.08)}
+.video-player__play svg{width:34px;height:34px;margin-left:6px}
+.video-player__caption{
+  position:absolute;left:24px;bottom:24px;color:var(--branco);
+  font-family:var(--ff-titulo);font-weight:500;font-style:italic;font-size:18px;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+}
+.video-outro{
+  max-width:820px;margin:48px auto 0;text-align:center;
+  font-size:1.05rem;line-height:1.8;color:var(--quase-preto);
+}
+.video-cta{text-align:center;margin-top:56px}
+
+/* ============ FORM CAMADA 2 ============ */
+.lead-block{
+  background:linear-gradient(135deg, var(--teal) 0%, var(--teal-escuro) 55%, var(--azul-profundo) 100%);
+  color:var(--off-white);
+  padding:55px 0;
+  position:relative;overflow:hidden;
+}
+.lead-block__blob{
+  position:absolute;
+  bottom:-20%;left:-15%;
+  width:55%;height:120%;
+  background:radial-gradient(circle at 60% 50%, rgba(95,181,204,.35) 0%, transparent 65%);
+  border-top-right-radius:55% 45%;
+  border-bottom-right-radius:60% 50%;
+  pointer-events:none;
+}
+.lead-block__wireframe{
+  position:absolute;
+  right:-5%;top:50%;transform:translateY(-50%);
+  width:45%;max-width:580px;
+  opacity:.12;
+  pointer-events:none;
+  color:var(--ouro);
+}
+.lead-block::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg, transparent, var(--ouro), transparent);
+}
+.lead-block .container{position:relative;z-index:1}
+.lead-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;
+}
+.lead-grid h2{color:var(--branco);font-size:clamp(1.7rem,2.8vw,2.4rem)}
+.lead-grid p{color:rgba(234,231,228,.85)}
+.form-card{
+  background:var(--branco);color:var(--quase-preto);
+  padding:44px;border-radius:var(--r-xl);
+  box-shadow:var(--shadow-lg);
+  border-top-right-radius:60px;
+}
+.form-card h3{color:var(--azul-profundo);font-size:1.5rem;margin-bottom:8px}
+.form-card .form-sub{color:var(--cinza);font-size:.95rem;margin-bottom:28px}
+.field{margin-bottom:16px}
+.field label{
+  display:block;font-size:11px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--azul-profundo);margin-bottom:6px;
+}
+.field input{
+  width:100%;padding:14px 16px;font-family:var(--ff-corpo);font-size:15px;
+  border:1px solid #d5d2cf;border-radius:var(--r-md);background:var(--off-white);
+  transition:border-color .18s ease, background .18s ease;
+}
+.field input:focus{outline:none;border-color:var(--teal);background:var(--branco);box-shadow:0 0 0 3px rgba(2,115,140,.12)}
+
+/* ============ CENARIO BLOCK ============ */
+.cenario{position:relative}
+.cenario__wireframe{
+  position:absolute;
+  bottom:-5%;right:-8%;
+  width:38%;max-width:420px;
+  opacity:.12;
+  color:var(--teal);
+  pointer-events:none;
+}
+.cenario-grid{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:stretch;
+  position:relative;z-index:1;
+}
+.cenario-grid > div:first-child{display:flex;flex-direction:column}
+.cenario-grid .cenario-foto{margin-top:auto}
+.cenario-grid .perguntas-card{height:100%;display:flex;flex-direction:column;justify-content:center}
+.cenario h2{font-size:clamp(1.6rem,2.6vw,2.1rem)}
+.cenario p{color:var(--quase-preto);font-size:1.05rem;line-height:1.8}
+.cenario-foto{
+  margin:40px 0 0;padding:0;
+  max-width:460px;width:100%;
+  border-radius:var(--r-lg);
+  border-top-left-radius:80px;
+  border-bottom-right-radius:80px;
+  overflow:hidden;
+  box-shadow:var(--shadow-md);
+  aspect-ratio:4/6;
+}
+.cenario-foto img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:899px){
+  .cenario-foto{max-width:100%;aspect-ratio:16/10}
+}
+.perguntas-card{
+  background:var(--branco);padding:44px;
+  border-radius:var(--r-xl);
+  border-top-right-radius:80px;
+  box-shadow:var(--shadow-md);
+  position:relative;
+}
+.perguntas-card::before{
+  content:"";position:absolute;left:0;top:32px;bottom:32px;width:3px;
+  background:linear-gradient(180deg, var(--teal) 0%, var(--ouro) 100%);
+  border-radius:2px;
+}
+.perguntas-card .pretitle{
+  font-family:var(--ff-titulo);font-style:italic;font-weight:600;
+  letter-spacing:-0.01em;
+  color:var(--azul-profundo);font-size:1.2rem;margin-bottom:20px;
+}
+.perguntas-list{list-style:none;padding:0;margin:0;counter-reset:p}
+.perguntas-list li{
+  counter-increment:p;
+  padding:14px 0 14px 44px;position:relative;
+  font-size:.98rem;line-height:1.6;color:var(--quase-preto);
+  border-bottom:1px solid rgba(16,41,50,.06);
+}
+.perguntas-list li:last-child{border-bottom:none}
+.perguntas-list li::before{
+  content:counter(p, decimal-leading-zero);
+  position:absolute;left:0;top:14px;
+  font-family:var(--ff-titulo);color:var(--ouro);font-weight:800;font-size:1rem;
+  letter-spacing:.05em;
+}
+.fechamento-block{
+  margin-top:56px;padding:40px;
+  background:linear-gradient(135deg, var(--teal) 0%, var(--azul-profundo) 100%);
+  color:var(--off-white);
+  border-radius:var(--r-xl);
+  border-bottom-left-radius:80px;
+  font-family:var(--ff-titulo);font-style:italic;font-weight:500;
+  font-size:1.18rem;line-height:1.6;
+  position:relative;overflow:hidden;
+}
+.fechamento-block::after{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--ouro);
+}
+
+/* ============ CTA RESERVA TERCIARIO ============ */
+.cta-reserva{
+  background:linear-gradient(135deg, var(--teal) 0%, var(--teal-escuro) 100%);
+  padding:45px 0;
+  color:var(--off-white);
+  position:relative;overflow:hidden;
+}
+.cta-reserva::before{
+  content:"";position:absolute;
+  top:-30%;right:-10%;width:50%;height:160%;
+  background:radial-gradient(circle, rgba(95,181,204,.3) 0%, transparent 60%);
+  border-radius:50%;
+  pointer-events:none;
+}
+.cta-reserva__bg{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-size:cover;background-position:center;
+  opacity:.22;mix-blend-mode:overlay;
+}
+.cta-reserva__bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg, var(--teal-escuro) 0%, rgba(2,115,140,.85) 35%, rgba(2,115,140,.2) 70%, transparent 100%);
+}
+.cta-reserva--bg-2 .cta-reserva__bg::after{
+  background:linear-gradient(270deg, var(--teal-escuro) 0%, rgba(2,115,140,.85) 35%, rgba(2,115,140,.2) 70%, transparent 100%);
+}
+.cta-reserva--bg-4 .cta-reserva__bg::after{
+  background:linear-gradient(270deg, var(--teal-escuro) 0%, rgba(2,115,140,.85) 35%, rgba(2,115,140,.2) 70%, transparent 100%);
+}
+.cta-reserva--bg-1 .cta-reserva__bg{background-image:url("assets/detalhe-15.jpg")}
+.cta-reserva--bg-2 .cta-reserva__bg{background-image:url("assets/seminario-03.jpg")}
+.cta-reserva--bg-3 .cta-reserva__bg{background-image:url("assets/seminario-04.jpg")}
+.cta-reserva--bg-4 .cta-reserva__bg{background-image:url("assets/detalhe-5.jpg")}
+.cta-reserva--bg-5 .cta-reserva__bg{background-image:url("assets/detalhe-11.jpg")}
+@media (max-width:768px){
+  .cta-reserva__bg{opacity:.12}
+}
+.cta-reserva::after{
+  content:"";position:absolute;left:0;right:0;top:0;height:2px;
+  background:linear-gradient(90deg, transparent, var(--ouro), transparent);
+}
+.cta-reserva__inner{
+  text-align:center;max-width:760px;margin:0 auto;position:relative;z-index:2;
+}
+.cta-reserva > .container{position:relative;z-index:2}
+.cta-reserva h3{font-size:clamp(1.5rem,2.6vw,2rem);color:var(--branco);font-weight:700;letter-spacing:-0.02em}
+.cta-reserva p{color:rgba(234,231,228,.88);font-size:.95rem;margin:0 auto 36px;max-width:920px;text-wrap:balance}
+@media (min-width:900px){
+  .cta-reserva__inner{max-width:980px}
+  .cta-reserva p{white-space:nowrap}
+}
+@media (max-width:899px){
+  .cta-reserva p{white-space:normal;text-wrap:pretty}
+}
+.cta-reserva .eyebrow{color:var(--ouro-claro)}
+/* cta-reserva: usa o teal premium padrao (sem override) */
+
+/* ============ MODULOS ============ */
+.evento-intro{max-width:840px;margin:0 auto 64px;text-align:center}
+.evento-intro h2{font-size:clamp(1.7rem,3vw,2.4rem)}
+.evento-intro p{font-size:1.05rem;line-height:1.75}
+.para-quem{
+  background:var(--branco);padding:56px;
+  border-radius:var(--r-xl);
+  border-top-left-radius:80px;
+  box-shadow:var(--shadow-md);margin-bottom:72px;
+  position:relative;overflow:hidden;
+}
+.para-quem h3{color:var(--azul-profundo);font-size:1.5rem;margin-bottom:24px;font-weight:700;letter-spacing:-0.015em}
+.para-quem ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
+.para-quem ul li{
+  padding-left:32px;position:relative;font-size:.98rem;line-height:1.55;color:var(--quase-preto);
+}
+.para-quem ul li::before{
+  content:"";position:absolute;left:0;top:7px;width:16px;height:16px;
+  border:2px solid var(--teal);border-radius:50%;
+  background:radial-gradient(circle, var(--ouro) 0%, var(--ouro) 35%, transparent 36%);
+}
+.modulos-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:36px;
+}
+.modulo-card{
+  background:var(--branco);
+  border-radius:var(--r-xl);
+  overflow:hidden;
+  box-shadow:var(--shadow-md);display:flex;flex-direction:column;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.modulo-card:nth-child(odd){border-top-right-radius:64px}
+.modulo-card:nth-child(even){border-top-left-radius:64px}
+.modulo-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.modulo-card__head{
+  padding:36px 36px 24px;
+  background:linear-gradient(135deg, var(--teal) 0%, var(--teal-escuro) 100%);
+  color:var(--off-white);
+  position:relative;overflow:hidden;
+}
+.modulo-card__head::before{
+  content:"";position:absolute;top:-30%;right:-20%;width:60%;height:160%;
+  background:radial-gradient(circle, rgba(95,181,204,.25) 0%, transparent 70%);
+  pointer-events:none;
+}
+.modulo-card__num{
+  font-family:var(--ff-titulo);font-size:11px;letter-spacing:.3em;
+  color:var(--ouro);font-weight:700;text-transform:uppercase;margin-bottom:8px;
+  position:relative;z-index:1;
+}
+.modulo-card__roman{
+  font-family:var(--ff-titulo);font-size:3.2rem;font-weight:800;
+  color:var(--ouro);line-height:1;letter-spacing:-0.04em;
+  margin-bottom:12px;position:relative;z-index:1;opacity:.95;
+}
+.modulo-card__title{
+  font-family:var(--ff-titulo);font-size:1.2rem;line-height:1.3;color:var(--branco);
+  font-weight:700;letter-spacing:-0.01em;margin-bottom:0;
+  position:relative;z-index:1;
+}
+.modulo-card__body{padding:28px 36px 40px;flex:1}
+.modulo-card__body ul{list-style:none;padding:0;margin:0}
+.modulo-card__body ul li{
+  padding:10px 0 10px 26px;position:relative;font-size:.94rem;line-height:1.55;
+  color:var(--quase-preto);border-bottom:1px dashed rgba(2,115,140,.18);
+}
+.modulo-card__body ul li:last-child{border-bottom:none}
+.modulo-card__body ul li::before{
+  content:"";position:absolute;left:0;top:18px;width:14px;height:2px;background:var(--teal);
+}
+.modulo-card__body ul li:hover::before{background:var(--ouro);width:20px;transition:.2s}
+
+/* ============ AUTORIDADE / DRA MARTELENE ============ */
+.autoridade{position:relative;overflow:hidden}
+.autoridade__wireframe{
+  position:absolute;top:8%;right:-6%;width:32%;max-width:380px;
+  opacity:.1;color:var(--teal);pointer-events:none;
+}
+.autoridade-grid{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:stretch;
+  position:relative;z-index:1;
+}
+.autoridade-card{
+  background:linear-gradient(135deg, var(--teal-claro) 0%, var(--teal) 55%, var(--teal-escuro) 100%);
+  color:var(--off-white);
+  padding:56px;
+  border-radius:var(--r-md);
+  border-top-right-radius:100px;
+  border-bottom-right-radius:100px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.autoridade-card::before{
+  content:"";position:absolute;top:-30%;right:-20%;width:60%;height:140%;
+  background:radial-gradient(circle, rgba(196,154,60,.15) 0%, transparent 65%);
+  pointer-events:none;
+}
+.autoridade-card h2{
+  color:var(--branco);
+  font-size:clamp(1.6rem,2.6vw,2.1rem);
+  font-weight:700;letter-spacing:-0.02em;line-height:1.2;
+  margin-bottom:28px;position:relative;z-index:1;
+}
+.autoridade-card p{color:rgba(234,231,228,.92);font-size:1.02rem;line-height:1.75;position:relative;z-index:1}
+.autoridade-card .destaque{
+  font-family:var(--ff-titulo);font-style:italic;font-weight:500;
+  color:var(--ouro-claro);font-size:1.1rem;line-height:1.6;
+  margin-top:24px;
+}
+.foto-dra{
+  background:linear-gradient(135deg, var(--azul-profundo) 0%, var(--quase-preto) 100%);
+  border-radius:var(--r-md);
+  border-top-left-radius:100px;
+  box-shadow:var(--shadow-lg);
+  position:relative;overflow:hidden;
+  min-height:100%;
+}
+.foto-dra img{
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.foto-dra::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg, transparent 55%, rgba(7,28,42,.45) 100%);
+}
+.credenciais-wrap{margin-top:64px}
+.credenciais-head{text-align:center;margin-bottom:36px}
+.credenciais-head .bignum-inline{
+  display:inline-block;color:var(--ouro);font-family:var(--ff-titulo);
+  font-weight:800;font-size:clamp(3rem,5vw,4.5rem);letter-spacing:-0.05em;line-height:.9;
+}
+.credenciais-head h3{font-size:clamp(1.3rem,2vw,1.7rem);margin-top:8px;color:var(--azul-profundo)}
+.credenciais{
+  list-style:none;padding:0;margin:0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.credenciais li{
+  padding:36px 24px 28px;background:var(--branco);
+  border-radius:var(--r-lg);
+  font-size:.95rem;line-height:1.5;color:var(--quase-preto);
+  box-shadow:0 6px 20px rgba(16,41,50,.06);
+  border-top:3px solid var(--teal);
+  transition:transform .2s ease;
+}
+.credenciais li:hover{transform:translateY(-3px)}
+.credenciais li .cred-icon{
+  display:block;width:38px;height:38px;margin-bottom:14px;
+  color:var(--ouro);
+}
+.credenciais li .cred-icon svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.credenciais li strong{
+  display:block;color:var(--ouro);font-family:var(--ff-titulo);
+  font-weight:800;font-size:1.6rem;letter-spacing:-0.03em;
+  margin-bottom:6px;line-height:1;
+}
+.palestrantes-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;
+}
+.palestrantes,.apoiadores{
+  padding:28px 32px;
+  background:rgba(2,115,140,.07);
+  border-radius:var(--r-lg);
+  border-left:3px solid var(--teal);
+}
+.palestrantes h4,.apoiadores h4{
+  font-family:var(--ff-corpo);font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;font-size:12px;color:var(--teal);margin-bottom:12px;
+}
+.palestrantes p,.apoiadores p{margin:0;color:var(--quase-preto);font-size:.95rem;line-height:1.6}
+.apoiadores .obs{font-size:.82rem;color:var(--cinza);margin-top:10px;font-style:italic}
+
+/* ============ PROVA SOCIAL ============ */
+.depoimentos-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;
+}
+.depoimento-card{
+  background:var(--branco);padding:40px;
+  border-radius:var(--r-xl);
+  border-top-right-radius:64px;
+  box-shadow:var(--shadow-md);
+  position:relative;
+}
+.depoimento-card::before{
+  content:"\201C";font-family:var(--ff-titulo);font-weight:800;font-size:140px;color:var(--ouro);
+  position:absolute;top:-12px;right:30px;line-height:1;opacity:.2;
+}
+.depoimento-card p{font-style:italic;font-weight:500;color:var(--quase-preto);font-size:1.02rem;line-height:1.7;margin-bottom:20px}
+.depoimento-card .autor{
+  font-family:var(--ff-corpo);font-weight:700;font-size:13px;
+  letter-spacing:.06em;color:var(--azul-profundo);text-transform:uppercase;
+}
+.depoimento-card .autor span{display:block;font-weight:400;color:var(--cinza);text-transform:none;letter-spacing:0;margin-top:4px;font-size:.85rem}
+.depoimento-video{
+  aspect-ratio:16/9;background:
+    linear-gradient(135deg, rgba(2,115,140,.78), rgba(16,41,50,.85)),
+    url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  border-radius:var(--r-xl);
+  border-top-left-radius:64px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;cursor:pointer;
+  border:1px solid rgba(196,154,60,.3);
+}
+.depoimento-video__play{
+  width:72px;height:72px;border-radius:50%;background:var(--teal);color:var(--branco);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 34px rgba(2,115,140,.55);
+  border:2px solid var(--ouro);
+}
+.depoimento-video__play svg{width:26px;height:26px;margin-left:4px}
+.depoimento-video__caption{position:absolute;bottom:22px;left:26px;color:var(--branco);font-family:var(--ff-titulo);font-weight:500;font-style:italic}
+
+/* ============ MODALIDADES ============ */
+.modalidades-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:36px;
+}
+.modalidade-card{
+  background:var(--branco);padding:48px;
+  border-radius:0 0 var(--r-xl) var(--r-xl);
+  box-shadow:var(--shadow-md);
+  display:flex;flex-direction:column;position:relative;
+  overflow:hidden;
+  border-top:4px solid var(--teal);
+}
+.modalidade-card--gold{
+  background:linear-gradient(180deg, var(--branco) 0%, var(--off-white) 100%);
+  box-shadow:0 18px 50px rgba(2,115,140,.18);
+  border-top:4px solid var(--ouro);
+}
+.modalidade-card--gold::before{display:none}
+.modalidade-card h3{font-size:1.5rem;color:var(--azul-profundo);margin-bottom:6px;font-weight:700;letter-spacing:-0.015em}
+.modalidade-card .sub{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:28px}
+.modalidade-card ul{list-style:none;padding:0;margin:0;flex:1}
+.modalidade-card ul li{
+  padding:12px 0 12px 32px;position:relative;font-size:.96rem;line-height:1.5;
+  color:var(--quase-preto);border-bottom:1px dashed rgba(2,115,140,.15);
+}
+.modalidade-card ul li:last-child{border-bottom:none}
+.modalidade-card ul li::before{
+  content:"";position:absolute;left:0;top:16px;width:18px;height:8px;
+  border-left:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(-45deg);
+}
+.bonus-livros{
+  margin-top:56px;
+  background:linear-gradient(135deg, var(--teal) 0%, var(--azul-profundo) 100%);
+  color:var(--off-white);padding:56px;
+  border-radius:var(--r-xl);
+  border-top-right-radius:100px;
+  position:relative;overflow:hidden;
+}
+.bonus-livros::before{
+  content:"";position:absolute;inset:0;
+  background-image:url("assets/detalhe-8.jpg");
+  background-size:cover;background-position:right center;
+  opacity:.28;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, transparent 40%, #000 80%);
+          mask-image:linear-gradient(90deg, transparent 0%, transparent 40%, #000 80%);
+  pointer-events:none;
+}
+.bonus-livros::after{
+  content:"";position:absolute;top:-30%;right:-15%;width:50%;height:160%;
+  background:radial-gradient(circle, rgba(196,154,60,.18) 0%, transparent 60%);
+  pointer-events:none;
+}
+@media (max-width:768px){
+  .bonus-livros::before{opacity:.12}
+}
+.bonus-livros > *{position:relative;z-index:1}
+.bonus-livros h3{color:var(--branco);font-size:1.6rem;font-weight:700;letter-spacing:-0.015em;position:relative;z-index:1}
+.bonus-livros .preco{
+  color:var(--ouro);font-weight:800;font-family:var(--ff-titulo);
+  font-size:1.6rem;letter-spacing:-0.02em;
+}
+.bonus-livros ol{padding-left:20px;margin:24px 0 0;color:rgba(234,231,228,.92);position:relative;z-index:1}
+.bonus-livros ol li{margin-bottom:12px;font-size:.98rem;line-height:1.55}
+.bonus-livros .obs{font-size:.82rem;color:rgba(234,231,228,.6);margin-top:18px;font-style:italic;position:relative;z-index:1}
+
+/* ============ INVESTIMENTO ============ */
+.tabela-invest{
+  background:var(--branco);
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+  border-bottom-left-radius:16px;
+  border-bottom-right-radius:16px;
+  border-top:3px solid var(--ouro);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+  max-width:920px;margin:0 auto;
+}
+.tabela-invest__head{
+  background:linear-gradient(135deg, var(--teal) 0%, var(--teal-escuro) 100%);
+  color:var(--off-white);
+  padding:28px 36px;display:flex;justify-content:space-between;align-items:center;
+}
+.tabela-invest__head h3{color:var(--branco);margin:0;font-size:1.2rem;letter-spacing:-0.01em;font-weight:700}
+.tabela-invest__head span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro-claro);font-weight:600}
+.tabela-row{
+  display:grid;grid-template-columns:200px 1fr;
+  padding:26px 36px;border-bottom:1px solid rgba(2,115,140,.1);
+  align-items:center;gap:16px;
+  transition:background .2s ease;
+}
+.tabela-row:hover{background:rgba(2,115,140,.04)}
+.tabela-row:last-child{border-bottom:none}
+.tabela-row__periodo{
+  font-family:var(--ff-titulo);font-weight:800;color:var(--teal);font-size:1.5rem;
+  text-transform:uppercase;letter-spacing:.04em;
+  position:relative;padding-left:22px;
+}
+.tabela-row__periodo::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:8px;height:28px;background:var(--ouro);border-radius:2px;
+}
+.tabela-row__valor{color:var(--quase-preto);font-size:1.05rem;font-weight:500}
+.descontos{
+  margin:36px auto 0;max-width:920px;
+  background:linear-gradient(180deg, var(--teal) 0%, var(--teal-escuro) 100%);
+  padding:44px 36px;
+  border-top-left-radius:0;
+  border-top-right-radius:0;
+  border-bottom-left-radius:16px;
+  border-bottom-right-radius:16px;
+  border-top:3px solid var(--ouro);
+  position:relative;
+  text-align:center;
+}
+.descontos__selo{
+  display:inline-block;font-family:var(--ff-titulo);font-weight:900;
+  color:var(--ouro);font-size:clamp(3.2rem,7vw,5rem);line-height:1;
+  letter-spacing:-0.04em;margin:0 0 4px;
+  animation:descontoPulse 2.8s ease-in-out infinite;
+}
+@keyframes descontoPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.04);opacity:.92}}
+.descontos__label{
+  display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--ouro);font-weight:700;margin-bottom:24px;
+}
+.descontos h4{
+  font-family:var(--ff-titulo);font-weight:700;letter-spacing:-0.015em;font-size:1.4rem;color:var(--off-white);margin-bottom:16px;
+}
+.descontos h4 span{color:var(--ouro);font-style:italic;font-size:1.8rem;font-weight:800;vertical-align:-2px;margin:0 4px}
+.descontos ul{list-style:none;padding:0;margin:0 auto;max-width:760px;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;text-align:left}
+.descontos ul li{padding-left:32px;position:relative;font-size:.96rem;color:rgba(234,231,228,.92);line-height:1.5}
+.descontos ul li::before{
+  content:"";position:absolute;left:0;top:3px;width:20px;height:20px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23C49A3C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><polyline points='4 11 8 15 16 6'/></svg>");
+  background-repeat:no-repeat;background-position:center;background-size:contain;
+}
+.bonus-inline{
+  margin:80px auto 0;max-width:760px;
+  text-align:center;padding:64px 56px;
+  background:
+    linear-gradient(180deg, #FBF9F5 0%, #ffffff 100%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.77  0 0 0 0 0.60  0 0 0 0 0.24  0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-blend-mode:multiply;
+  border:1px solid var(--ouro);
+  font-size:.98rem;color:var(--quase-preto);
+  position:relative;
+  box-shadow:0 24px 60px -20px rgba(2,115,140,.15), inset 0 0 0 1px rgba(255,255,255,.4);
+}
+/* Linha interna dupla */
+.bonus-inline::before{
+  content:"";position:absolute;inset:10px;
+  border:1px solid rgba(196,154,60,.28);
+  pointer-events:none;
+}
+/* Cantos decorados em "L" — 4 cantos */
+.bonus-inline__corner{
+  position:absolute;width:34px;height:34px;pointer-events:none;
+}
+.bonus-inline__corner svg{display:block;width:100%;height:100%}
+.bonus-inline__corner--tl{top:-1px;left:-1px}
+.bonus-inline__corner--tr{top:-1px;right:-1px;transform:scaleX(-1)}
+.bonus-inline__corner--bl{bottom:-1px;left:-1px;transform:scaleY(-1)}
+.bonus-inline__corner--br{bottom:-1px;right:-1px;transform:scale(-1,-1)}
+
+/* Selo "EXCLUSIVO" canto superior direito */
+.bonus-inline__seal{
+  position:absolute;top:-32px;right:32px;width:78px;height:78px;
+  filter:drop-shadow(0 8px 16px rgba(196,154,60,.28));
+}
+.bonus-inline__seal svg{display:block;width:100%;height:100%}
+
+.bonus-inline__ornament{
+  display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;
+}
+.bonus-inline__ornament span{display:block;width:48px;height:1px;background:var(--ouro)}
+.bonus-inline__ornament i{
+  display:block;width:7px;height:7px;background:var(--ouro);
+  transform:rotate(45deg);
+}
+.bonus-inline__eyebrow{
+  font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ouro);
+  font-weight:700;margin:0 0 22px;
+}
+.bonus-inline__books{width:132px;height:auto;display:block;margin:0 auto 22px}
+.bonus-inline__title{
+  font-family:var(--ff-titulo);font-weight:700;letter-spacing:-0.02em;
+  font-size:clamp(1.5rem,2.4vw,1.75rem);color:var(--azul-profundo);
+  line-height:1.2;margin:0 0 18px;
+}
+.bonus-inline__body{
+  font-size:1.05rem;color:var(--quase-preto);line-height:1.65;
+  margin:0 auto;max-width:520px;
+}
+.bonus-inline__price{
+  display:inline-block;color:var(--ouro);font-family:var(--ff-titulo);
+  font-weight:800;font-size:1.4rem;letter-spacing:-0.01em;
+  position:relative;padding:0 2px;
+}
+.bonus-inline__price::after{
+  content:"";display:block;width:42px;height:1px;background:var(--ouro);
+  margin:4px auto 0;
+}
+.bonus-inline__books-list{
+  list-style:none;padding:0;margin:28px auto 0;max-width:560px;
+  display:grid;gap:12px;text-align:left;
+  border-top:1px solid rgba(196,154,60,.25);padding-top:24px;
+}
+.bonus-inline__books-list li{
+  display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start;
+  font-family:var(--ff-titulo);font-weight:500;color:var(--azul-profundo);
+  font-size:.95rem;line-height:1.45;
+}
+.bonus-inline__books-list li .num{
+  color:var(--ouro);font-weight:700;font-size:.9rem;letter-spacing:.08em;
+  padding-top:2px;
+}
+@media (max-width:640px){
+  .bonus-inline{padding:48px 28px}
+  .bonus-inline__seal{width:64px;height:64px;top:-26px;right:18px}
+  .bonus-inline__books{width:108px}
+}
+
+/* ============ FAQ ============ */
+.faq{max-width:880px;margin:0 auto}
+.faq-item{
+  background:var(--branco);
+  border-radius:var(--r-lg);
+  margin-bottom:16px;
+  box-shadow:0 6px 18px rgba(16,41,50,.05);overflow:hidden;
+  border-left:3px solid var(--teal);
+  transition:border-left-color .2s ease;
+}
+.faq-item[open]{border-left-color:var(--ouro)}
+.faq-q{
+  padding:24px 30px;display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;list-style:none;font-family:var(--ff-titulo);font-weight:600;
+  letter-spacing:-0.01em;
+  color:var(--azul-profundo);font-size:1.08rem;
+}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{
+  content:"+";font-family:var(--ff-titulo);color:var(--teal);font-size:1.8rem;
+  font-weight:300;line-height:1;transition:transform .25s ease;
+}
+.faq-item[open] .faq-q::after{color:var(--ouro);content:"\2212"}
+.faq-a{padding:0 30px 28px;color:var(--quase-preto);font-size:.98rem;line-height:1.7}
+.faq-cta{text-align:center;margin-top:56px}
+
+/* ============ FECHAMENTO ============ */
+.fechamento-wrap{background:#fff;padding:0 0 50px}
+.fechamento{
+  background:linear-gradient(180deg, #02738C 0%, #015a6e 50%, #102932 100%);
+  color:var(--off-white);text-align:center;padding:80px 0 88px;
+  position:relative;overflow:hidden;
+  border-radius:70px;
+  margin:0 32px;
+  background-clip:padding-box;
+}
+.fechamento::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg, transparent, var(--ouro), transparent);
+}
+.fechamento .container{position:relative;z-index:1}
+.fechamento__divider{
+  display:block;width:80px;height:1px;background:var(--ouro);
+  margin:0 auto 32px;opacity:.85;
+}
+.fechamento__quote{
+  max-width:720px;margin:0 auto 22px;font-family:var(--ff-titulo);font-weight:500;
+  font-size:clamp(1.2rem,2vw,1.55rem);line-height:1.7;letter-spacing:-0.015em;color:rgba(234,231,228,.95);
+}
+.fechamento__highlight{
+  position:relative;display:block;max-width:820px;margin:36px auto 0;
+  font-family:var(--ff-titulo);font-style:italic;font-weight:600;
+  font-size:clamp(1.35rem,2.3vw,1.78rem);line-height:1.55;letter-spacing:-0.015em;
+  color:var(--ouro);padding:0 56px;
+}
+.fechamento__highlight::before,
+.fechamento__highlight::after{
+  content:"\201C";position:absolute;font-family:var(--ff-titulo);font-weight:800;
+  font-size:5rem;color:var(--ouro);opacity:.45;line-height:1;
+}
+.fechamento__highlight::before{left:0;top:-12px}
+.fechamento__highlight::after{content:"\201D";right:0;bottom:-32px}
+.fechamento .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:56px}
+
+/* ============ RODAPE ============ */
+.rodape{
+  background:linear-gradient(135deg, var(--teal-escuro) 0%, var(--azul-profundo) 55%, var(--quase-preto) 100%);
+  color:rgba(234,231,228,.78);padding:45px 0 28px;
+  position:relative;overflow:hidden;
+}
+.rodape__blob{
+  position:absolute;top:-15%;right:-10%;width:45%;height:100%;
+  background:radial-gradient(circle at 60% 50%, rgba(95,181,204,.18) 0%, transparent 60%);
+  border-bottom-left-radius:60% 40%;
+  pointer-events:none;
+}
+.rodape__wireframe{
+  position:absolute;right:-5%;bottom:-10%;width:50%;max-width:640px;
+  opacity:.18;color:var(--teal-claro);pointer-events:none;
+}
+.rodape .container{position:relative;z-index:1}
+.rodape-head{
+  margin-bottom:56px;text-align:left;
+  display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;
+}
+.rodape-head__text{max-width:560px;flex:1 1 460px}
+.rodape-head__cta{flex:0 0 auto}
+.rodape-head .eyebrow{color:var(--ouro);letter-spacing:.22em}
+.rodape-head h3{
+  color:var(--branco);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;
+  letter-spacing:-0.025em;line-height:1.15;margin-bottom:14px;
+}
+.rodape-head p{color:rgba(234,231,228,.7);font-size:1.05rem;line-height:1.6;max-width:480px}
+.rodape-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.rodape h5{
+  font-family:var(--ff-corpo);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ouro);font-size:12px;margin-bottom:18px;
+  position:relative;padding-bottom:10px;
+}
+.rodape h5::after{
+  content:"";position:absolute;left:0;bottom:0;width:32px;height:2px;background:var(--teal-claro);
+}
+.rodape p,.rodape a,.rodape li{color:rgba(234,231,228,.78);font-size:.95rem;line-height:1.75}
+.rodape ul{list-style:none;padding:0;margin:0}
+.rodape a:hover{color:var(--ouro-claro)}
+.rodape a.btn:hover{color:inherit}
+.rodape a.btn--whatsapp:hover{color:#fff}
+.rodape-logos{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.rodape-logos .logo-slot{font-size:11px;color:rgba(234,231,228,.6);border-color:rgba(234,231,228,.2);background:transparent}
+.rodape-bottom{
+  border-top:1px solid rgba(234,231,228,.1);padding-top:24px;
+  font-size:.82rem;color:rgba(234,231,228,.45);text-align:center;
+}
+
+/* ============ WHATSAPP FLUTUANTE ============ */
+.whats-float{
+  position:fixed;right:24px;bottom:24px;z-index:80;
+  width:64px;height:64px;border-radius:50%;background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 30px rgba(37,211,102,.45);
+  transition:transform .2s ease;
+}
+.whats-float:hover{transform:scale(1.08);color:#fff}
+.whats-float svg{width:32px;height:32px;color:#fff}
+
+/* ============ RESPONSIVO ============ */
+@media (max-width: 980px){
+  .section{padding:var(--gap-secao-mob) 0}
+  .hero{padding:45px 0 40px}
+  .hero__meta{flex-wrap:wrap;gap:12px 18px;padding:20px 14px;font-size:13px}
+  .hero__meta__item{font-size:13px}
+  .hero__meta__item svg{width:16px;height:16px}
+  .lead-grid,.cenario-grid,.modulos-grid,.modalidades-grid,
+  .depoimentos-grid,.autoridade-grid,.rodape-grid,.palestrantes-row{grid-template-columns:1fr;gap:36px}
+  .credenciais{grid-template-columns:1fr}
+  .descontos ul,.para-quem ul{grid-template-columns:1fr}
+  .tabela-row{grid-template-columns:1fr;text-align:left;padding:18px 22px}
+  .tabela-row__periodo{font-size:1.2rem}
+  .form-card,.para-quem,.modalidade-card,.perguntas-card,.autoridade-card,.bonus-livros{padding:32px}
+  .hero__ctas{flex-direction:column;align-items:stretch}
+  .btn{width:100%;padding:16px 28px;font-size:13px;letter-spacing:.1em;gap:10px}
+  .btn--lg{padding:18px 36px;font-size:14px;letter-spacing:.12em;gap:12px}
+  .btn--hero-primary{width:100%;min-width:auto}
+  .btn__icon{width:16px;height:16px}
+  .btn--lg .btn__icon{width:18px;height:18px}
+  .topbar__inner{flex-direction:column;gap:8px}
+  .modulo-card__head,.modulo-card__body{padding-left:28px;padding-right:28px}
+  .foto-dra{aspect-ratio:1/1}
+  .autoridade-card{border-radius:var(--r-lg);border-top-right-radius:60px;border-bottom-right-radius:60px}
+  .fechamento{border-radius:48px;margin:0 16px;padding:64px 0 72px}
+  .rodape-head{flex-direction:column;align-items:flex-start;gap:28px}
+  .rodape-head__cta{width:100%}
+  .rodape-head__cta .btn{width:100%}
+}
+@media (max-width: 480px){
+  .container{padding:0 18px}
+  .hero h1{font-size:1.7rem}
+  .hero__edition{max-width:220px;margin-bottom:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ SVG WIREFRAME REUTILIZAVEL ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="wireframe-skyline" viewBox="0 0 800 500">
+      <g fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+        <!-- ponto fuga 1 - linhas perspectiva -->
+        <line x1="0" y1="450" x2="800" y2="450" opacity=".6"/>
+        <line x1="0" y1="430" x2="800" y2="440" opacity=".3"/>
+
+        <!-- predio 1 (esq baixo) -->
+        <path d="M40 450 L40 280 L150 240 L150 450 Z"/>
+        <line x1="40" y1="320" x2="150" y2="290"/>
+        <line x1="40" y1="360" x2="150" y2="335"/>
+        <line x1="40" y1="400" x2="150" y2="380"/>
+        <line x1="65" y1="305" x2="65" y2="450"/>
+        <line x1="95" y1="295" x2="95" y2="450"/>
+        <line x1="125" y1="282" x2="125" y2="450"/>
+        <!-- janelas predio 1 -->
+        <rect x="50" y="295" width="14" height="20" opacity=".4"/>
+        <rect x="76" y="288" width="14" height="20" opacity=".4"/>
+        <rect x="106" y="280" width="14" height="20" opacity=".4"/>
+        <rect x="136" y="270" width="12" height="20" opacity=".4"/>
+
+        <!-- predio 2 (central alto) -->
+        <path d="M150 450 L150 180 L290 130 L290 450 Z"/>
+        <line x1="150" y1="220" x2="290" y2="180"/>
+        <line x1="150" y1="260" x2="290" y2="225"/>
+        <line x1="150" y1="300" x2="290" y2="270"/>
+        <line x1="150" y1="340" x2="290" y2="315"/>
+        <line x1="150" y1="380" x2="290" y2="360"/>
+        <line x1="150" y1="420" x2="290" y2="405"/>
+        <line x1="185" y1="200" x2="185" y2="450"/>
+        <line x1="220" y1="187" x2="220" y2="450"/>
+        <line x1="255" y1="175" x2="255" y2="450"/>
+        <!-- top antena -->
+        <line x1="220" y1="180" x2="220" y2="130"/>
+        <line x1="210" y1="155" x2="230" y2="155"/>
+
+        <!-- predio 3 (medio) -->
+        <path d="M290 450 L290 220 L420 175 L420 450 Z"/>
+        <line x1="290" y1="280" x2="420" y2="245"/>
+        <line x1="290" y1="340" x2="420" y2="320"/>
+        <line x1="290" y1="400" x2="420" y2="385"/>
+        <line x1="325" y1="240" x2="325" y2="450"/>
+        <line x1="360" y1="225" x2="360" y2="450"/>
+        <line x1="395" y1="210" x2="395" y2="450"/>
+        <rect x="300" y="255" width="18" height="22" opacity=".4"/>
+        <rect x="335" y="248" width="18" height="22" opacity=".4"/>
+        <rect x="370" y="238" width="18" height="22" opacity=".4"/>
+
+        <!-- predio 4 (atras / grande) -->
+        <path d="M420 450 L420 90 L580 60 L580 450 Z"/>
+        <line x1="420" y1="160" x2="580" y2="130"/>
+        <line x1="420" y1="220" x2="580" y2="195"/>
+        <line x1="420" y1="280" x2="580" y2="260"/>
+        <line x1="420" y1="340" x2="580" y2="325"/>
+        <line x1="420" y1="400" x2="580" y2="390"/>
+        <line x1="460" y1="110" x2="460" y2="450"/>
+        <line x1="500" y1="100" x2="500" y2="450"/>
+        <line x1="540" y1="80" x2="540" y2="450"/>
+        <!-- top -->
+        <line x1="500" y1="100" x2="500" y2="40"/>
+        <line x1="490" y1="65" x2="510" y2="65"/>
+        <line x1="490" y1="50" x2="510" y2="50"/>
+
+        <!-- predio 5 (dir) -->
+        <path d="M580 450 L580 250 L720 215 L720 450 Z"/>
+        <line x1="580" y1="310" x2="720" y2="285"/>
+        <line x1="580" y1="370" x2="720" y2="350"/>
+        <line x1="580" y1="420" x2="720" y2="410"/>
+        <line x1="620" y1="265" x2="620" y2="450"/>
+        <line x1="660" y1="250" x2="660" y2="450"/>
+        <line x1="700" y1="232" x2="700" y2="450"/>
+
+        <!-- grua / guindaste -->
+        <line x1="650" y1="240" x2="650" y2="100"/>
+        <line x1="650" y1="100" x2="780" y2="120"/>
+        <line x1="650" y1="115" x2="780" y2="130"/>
+        <line x1="650" y1="100" x2="600" y2="115"/>
+        <line x1="650" y1="115" x2="610" y2="125"/>
+        <line x1="700" y1="105" x2="700" y2="160"/>
+        <line x1="695" y1="160" x2="705" y2="160"/>
+
+        <!-- chao / base -->
+        <line x1="0" y1="450" x2="800" y2="450"/>
+        <line x1="0" y1="470" x2="800" y2="470" opacity=".3"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+<!-- ============ HERO (BLOCO 1 PARTE INICIAL) ============ -->
+<section class="hero">
+  <div class="hero__blob"></div>
+  <svg class="hero__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+  <svg class="hero__wireframe hero__wireframe--left" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+
+  <div class="container">
+    <img class="hero__edition" src="assets/logo-seminario-banco.png" alt="12º Seminário Nacional de Tributação e Legislação da Construção Civil — 22 e 23 de outubro de 2026">
+    <h1>É a oportunidade que você precisa para sair na frente em um dos momentos mais críticos do setor, com foco <span style="white-space:nowrap">exclusivo e especializado</span></h1>
+    <div class="hero__evento">12º Seminário Nacional de Tributação e Legislação da Construção Civil</div>
+    <p class="hero__sub">A reforma exigirá uma complexa engenharia tributária para manter a competitividade num período convivendo com novos e antigos tributos.</p>
+    <p class="hero__apoio">Sustentabilidade, tecnologia, eficiência e viabilidade financeira são os eixos que garantem os negócios, isto envolve a aquisição de materiais, a contratação da mão de obra e <span style="white-space:nowrap">locação de equipamentos.</span></p>
+
+    <div class="hero__meta">
+      <span class="hero__meta__item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+        22 e 23 de outubro de 2026
+      </span>
+      <span class="hero__meta__sep">·</span>
+      <span class="hero__meta__item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        São Paulo
+      </span>
+      <span class="hero__meta__sep">·</span>
+      <span class="hero__meta__item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Presencial e Online
+      </span>
+      <span class="hero__meta__sep">·</span>
+      <span class="hero__meta__item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z"/></svg>
+        Segurança Jurídica e Planejamento Tributário
+      </span>
+    </div>
+
+    <div class="hero__ctas">
+      <a href="#programacao-form" class="btn btn--primary btn--lg btn--hero-primary">
+        <span>Quero participar do 12º Seminário Nacional</span>
+        <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="4" y1="12" x2="19" y2="12"/>
+          <polyline points="13 6 19 12 13 18"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+    <span class="marquee__item">12º Seminário Nacional</span>
+    <span class="marquee__sep">◆</span>
+  </div>
+</div>
+
+<!-- ============ CAMADA 1 — VÍDEO ============ -->
+<section class="video-section">
+  <div class="container">
+    <div class="video-wrap">
+      <p class="video-intro">Uma palavra de quem organiza este seminário há mais de uma década, com sucesso.</p>
+
+      <div class="video-player" role="button" aria-label="Reproduzir vídeo da Dra. Martelene">
+        <div class="video-player__label">[PLAYER DE VÍDEO 2-3 min]</div>
+        <div class="video-player__play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="video-player__caption">[FOTO DRA MARTELENE no thumbnail]</div>
+      </div>
+
+      <p class="video-outro">Desde a primeira edição, o Seminário Nacional existe para fazer o que poucos eventos do setor fazem: como funciona no dia a dia. Não nos contentamos só com a atualização das leis de forma teórica. Trabalhamos os temas com profundidade técnica e prática suficiente para que cada participante saia com clareza sobre o caminho a seguir nos negócios.</p>
+      <p class="video-outro" style="margin-top:0;font-family:var(--ff-titulo);font-style:italic;font-weight:500;color:var(--azul-profundo);font-size:1.2rem">Em 2026, esse compromisso é mais necessário do que nunca.</p>
+
+      <div class="video-cta">
+        <a href="#programacao-form" class="btn btn--teal btn--lg"><span>Quero participar do 12º Seminário Nacional</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+        <p class="muted" style="font-size:.85rem;margin-top:14px">CTA primário liberado somente após 01/07. Por enquanto, receba a programação completa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAMADA 2 — FORM PROGRAMAÇÃO ============ -->
+<section class="lead-block" id="programacao-form">
+  <div class="lead-block__blob"></div>
+  <svg class="lead-block__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+
+  <div class="container">
+    <div class="lead-grid">
+      <div>
+        <h2>Receber a programação completa</h2>
+        <p>Formulário simples com entrega do PDF de apresentação do Seminário com os 4 módulos detalhados + cronograma + informações de investimento.</p>
+        <p style="color:rgba(234,231,228,.85);font-size:.95rem">Entrega imediata: o guia técnico chega no seu e-mail em instantes após o cadastro.</p>
+      </div>
+
+      <form class="form-card" onsubmit="event.preventDefault(); alert('Formulário de demonstração do preview.');">
+        <h3>Quero receber a programação</h3>
+        <p class="form-sub">4 módulos detalhados + cronograma + investimento</p>
+        <div class="field"><label for="p-nome">Nome</label><input id="p-nome" type="text" required></div>
+        <div class="field"><label for="p-email">E-mail</label><input id="p-email" type="email" required></div>
+        <div class="field"><label for="p-whats">WhatsApp</label><input id="p-whats" type="tel" required></div>
+        <div class="field"><label for="p-empresa">Empresa</label><input id="p-empresa" type="text" required></div>
+        <button type="submit" class="btn btn--teal btn--block btn--lg"><span>Quero receber</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 1 — O CENARIO E CONTEXTO ============ -->
+<section class="section section--cream cenario">
+  <svg class="cenario__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+
+  <div class="container">
+    <div class="cenario-grid">
+      <div>
+        <h2>O setor da construção civil possui um ciclo operacional muito longo, que exige controle e planejamento, principalmente no período de transição da reforma tributária.</h2>
+        <div class="divider"></div>
+        <p>A LC 214/2025 não é uma reforma incremental. Ela reorganiza a lógica tributária do país de forma estrutural, e o setor da construção civil está entre os mais afetados. IBS, CBS, Split Payment, reforma do Imposto de Renda, novos critérios para distribuição de lucros, impactos nos contratos e nas estruturas societárias. A lista é longa. O prazo para adaptação, é curto.</p>
+        <figure class="cenario-foto">
+          <img src="assets/martelene-pessoal-1.jpg" alt="Dra. Martelene Carvalhaes" loading="lazy">
+        </figure>
+      </div>
+
+      <div class="perguntas-card">
+        <div class="pretitle">Você já sabe responder com precisão a essas questões?</div>
+        <ol class="perguntas-list">
+          <li>Como fica a carga tributária da sua incorporação na transição de 2026 para 2027?</li>
+          <li>Qual o reflexo na carga tributária no lucro presumido?</li>
+          <li>RET de 4% e de 1% continua valendo? Em que condições?</li>
+          <li>Sua empresa está preparada para o Split Payment e o controle de créditos do IBS e da CBS? Qual o reflexo nos Consórcios de construção?</li>
+          <li>Os contratos de empreitada que você usa hoje têm cláusulas adequadas para o novo cenário, que estimula a industrialização fora do canteiro?</li>
+          <li>Faturamento direto para os clientes e contrato pelo regime de administração, ainda valem? PMG é uma opção? E a contratação de empresas do Simples?</li>
+          <li>Como fica a tributação da distribuição de lucros a partir de 2026? Como planejar?</li>
+          <li>SPE e SCP continuam sendo a estrutura certa para os seus empreendimentos?</li>
+          <li>A emissão de notas fiscais no novo ambiente nacional está configurada corretamente?</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="fechamento-block">
+      Deixar essas perguntas sem resposta não é uma opção neutra. Cada decisão tomada sem clareza técnica suficiente tem um custo: financeiro, jurídico e estratégico.
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA TERCIARIO — RESERVA ============ -->
+<section class="cta-reserva cta-reserva--bg-1" id="reservar">
+  <div class="cta-reserva__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-reserva__inner">
+      <h3>Reservar minha posição com prioridade</h3>
+      <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
+      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 2 — O EVENTO + 4 MÓDULOS ============ -->
+<section class="section section--cream">
+  <div class="container">
+    <div class="evento-intro">
+      <h2>2 dias. 4 módulos.<br>Profundidade técnica que você não vai encontrar em outro lugar.</h2>
+      <div class="divider divider--center"></div>
+      <p>O 12º Seminário Nacional de Tributação e Legislação da Construção Civil vai abranger os negócios antigos dentro de uma nova realidade de processos, com uma visão de futuro e legalidade. É uma imersão técnica e estratégica onde serão abordados todos os processos, desde aquisição do terreno ou gleba, estruturas jurídicas, contratos de construção e a regularização da propriedade perante a receita federal. A importância do Compliance Tributário, e contabilidade para atender licitações, captação de recursos, investidores e tributação.</p>
+      <p style="font-family:var(--ff-titulo);font-style:italic;font-weight:500;color:var(--azul-profundo);font-size:1.25rem">Dois dias de trabalho real.<br>Temas tratados com a profundidade que o momento exige.</p>
+    </div>
+
+    <div class="para-quem">
+      <h3>Para quem é</h3>
+      <p style="margin-bottom:24px">Este seminário é para você se:</p>
+      <ul>
+        <li>Você é construtor, incorporador ou loteador e precisa entender o impacto real das novas regras nos seus empreendimentos e as alternativas legais.</li>
+        <li>Você é advogado ou atua em departamento jurídico e precisa antecipar os riscos contratuais e societários da transição.</li>
+        <li>Você é contador, fiscal ou gestor financeiro e precisa dominar as novas obrigações e rotinas.</li>
+        <li>Você é consultor e assessora empresas do setor — e quer garantir que sua orientação seja tecnicamente sólida.</li>
+        <li>Você toma decisões com impacto financeiro e precisa de clareza para agir com segurança.</li>
+      </ul>
+    </div>
+
+    <div class="modulos-grid">
+      <article class="modulo-card">
+        <div class="modulo-card__head">
+          <div class="modulo-card__num">Módulo</div>
+          <div class="modulo-card__roman">I</div>
+          <h3 class="modulo-card__title">Reforma Tributária e os Desafios Concretos no Mercado Imobiliário</h3>
+        </div>
+        <div class="modulo-card__body">
+          <ul>
+            <li>Aquisição de terrenos no novo modelo tributário: redutor de ajuste e redutor social</li>
+            <li>A transição da reforma e o RET de 4% e 1%</li>
+            <li>O Split Payment e o controle de créditos do IBS e da CBS</li>
+            <li>Carga tributária na transição e a majoração do lucro presumido no loteamento</li>
+            <li>Tributação das receitas de aluguéis de imóveis: lucro real ou presumido?</li>
+            <li>O Compliance tributário</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="modulo-card">
+        <div class="modulo-card__head">
+          <div class="modulo-card__num">Módulo</div>
+          <div class="modulo-card__roman">II</div>
+          <h3 class="modulo-card__title">Adaptação Estratégica e Novos Modelos de Negócios</h3>
+        </div>
+        <div class="modulo-card__body">
+          <ul>
+            <li>A Incorporação Imobiliária e os Loteamentos. O condomínio de lotes e casas isoladas</li>
+            <li>SPE, SCP, Holdings e os tributos sobre consumo (IBS e CBS)</li>
+            <li>O ITBI e o ITCMD</li>
+            <li>Emissão de notas fiscais para cada atividade</li>
+            <li>Contratos de venda de imóveis: lei do distrato ou CDC?</li>
+            <li>A Inteligência Artificial para prever prazos e riscos</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="modulo-card">
+        <div class="modulo-card__head">
+          <div class="modulo-card__num">Módulo</div>
+          <div class="modulo-card__roman">III</div>
+          <h3 class="modulo-card__title">Mão de Obra, Contratos da Construção Civil e Industrialização</h3>
+        </div>
+        <div class="modulo-card__body">
+          <ul>
+            <li>Clausulas de garantia (alteração do Código Civil) e gestão tributária com os tributos não cumulativos (IBS e CBS)</li>
+            <li>Como evitar riscos na gestão dos contratos administrando a carga tributária</li>
+            <li>Vantagens da industrialização fora do canteiro de obra</li>
+            <li>Emissão de notas fiscais de serviço no ambiente nacional</li>
+            <li>Os novos tributos e os efeitos na precificação, BDI e gestão de custos</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="modulo-card">
+        <div class="modulo-card__head">
+          <div class="modulo-card__num">Módulo</div>
+          <div class="modulo-card__roman">IV</div>
+          <h3 class="modulo-card__title">Emissão de Documentos Fiscais, Contabilidade e Regularização</h3>
+        </div>
+        <div class="modulo-card__body">
+          <ul>
+            <li>Emissão de documentos fiscais no sistema de creditamento e perante a CNO da obra</li>
+            <li>ISS da Construção Civil com a implantação do IBS a partir de 2027</li>
+            <li>A NR1 e o eSocial no ambiente nacional, e o SERO na emissão de CND de obra</li>
+            <li>A Contabilidade da Construção Civil e o Sistema do POC (Percentage of Completion)</li>
+            <li>O Regime de Competência Contábil e a tributação da distribuição de lucros a partir de 2026: como planejar?</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA TERCIARIO REPETIDO ============ -->
+<section class="cta-reserva cta-reserva--bg-2">
+  <div class="cta-reserva__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-reserva__inner">
+      <h3>Reservar minha posição com prioridade</h3>
+      <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
+      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 3 — COORDENAÇÃO E AUTORIDADE ============ -->
+<section class="section section--white autoridade">
+  <svg class="autoridade__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+
+  <div class="container">
+    <div class="autoridade-grid">
+      <div class="autoridade-card">
+        <h2>Coordenação técnica de quem passou mais de 30 anos exclusivamente dentro desse setor.</h2>
+        <p>Dra. Martelene Carvalhaes Pereira e Souza é advogada tributarista e contadora, professora e escritora, com atuação exclusiva no setor imobiliário e da construção civil há mais de 30 anos. Autora de livros técnicos de referência no setor, ministra treinamentos para capacitação técnica há mais de 20 anos em todo o país.</p>
+        <p>É sócia da MC Sociedade de Advogados e da MLF Consultoria Tributária, e membro do CONJUR - Conselho Jurídico da CBIC.</p>
+        <p class="destaque">Organiza o Seminário Nacional desde a primeira edição. Não como evento. Como um compromisso técnico com o setor.</p>
+      </div>
+
+      <div class="foto-dra">
+        <img src="assets/martelene-pessoal-20.jpg" alt="Retrato editorial da Dra. Martelene Carvalhaes" loading="lazy">
+      </div>
+    </div>
+
+    <div class="credenciais-wrap">
+      <ul class="credenciais">
+        <li>
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4 L16 28"/><path d="M8 28 L24 28"/><path d="M16 8 L7 14 L9 18 L16 16 L23 18 L25 14 Z"/><path d="M5 18 Q7 22 9 18"/><path d="M23 18 Q25 22 27 18"/></svg></span>
+          <strong>30+</strong>anos de atuação exclusiva no setor imobiliário e construção civil
+        </li>
+        <li>
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 6 L4 12 L16 18 L28 12 Z"/><path d="M9 15 L9 22 Q9 25 16 25 Q23 25 23 22 L23 15"/><path d="M28 12 L28 19"/><path d="M27 19 L29 19 L28 22 Z"/></svg></span>
+          <strong>20+</strong>anos ministrando treinamentos em todo o país
+        </li>
+        <li>
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="20" rx="2"/><path d="M5 13 L27 13"/><path d="M10 4 L10 9"/><path d="M22 4 L22 9"/><polyline points="11 19 14 22 21 16"/></svg></span>
+          <strong>11</strong>edições anteriores do Seminário sem interrupção
+        </li>
+        <li>
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M19 5 L27 13 L23 17 L15 9 Z"/><path d="M15 9 L7 17"/><path d="M4 22 L10 16 L14 20 L8 26 Z"/><path d="M4 28 L14 28"/></svg></span>
+          Advogada tributarista, contadora, professora e escritora
+        </li>
+        <li>
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 8 Q4 6 9 6 L15 8 L15 26 L9 24 Q4 24 4 26 Z"/><path d="M28 8 Q28 6 23 6 L15 8 L15 26 L23 24 Q28 24 28 26 Z"/><path d="M15 8 L15 26"/></svg></span>
+          Autora de livros técnicos de referência
+        </li>
+        <li>
+          <span class="cred-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 4 L26 8 L26 16 Q26 23 16 28 Q6 23 6 16 L6 8 Z"/><polyline points="11 16 14 19 21 12"/></svg></span>
+          Membro do CONJUR — Conselho Jurídico da CBIC
+        </li>
+      </ul>
+
+      <div class="palestrantes-row">
+        <div class="palestrantes">
+          <h4>Palestrantes convidados</h4>
+          <p>Os especialistas convidados para as sessões técnicas serão divulgados a partir de julho de 2026.</p>
+        </div>
+
+        <div class="apoiadores">
+          <h4>Apoiadores institucionais</h4>
+          <p>Ano anterior: APEOP, APeMEC, CREA-SP, SindusconSP, Sinduscon-PA, Sinduscon-Rio, Sinduscon GO, Sinduscon da BA.</p>
+          <p class="obs">(Atualizar conforme novas confirmações — CONFIRMAR COM TODOS ELES, ANTES DE DIVULGAR)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA TERCIARIO REPETIDO ============ -->
+<section class="cta-reserva cta-reserva--bg-3">
+  <div class="cta-reserva__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-reserva__inner">
+      <h3>Reservar minha posição com prioridade</h3>
+      <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
+      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 4 — PROVA SOCIAL ============ -->
+<section class="section section--cream">
+  <div class="container">
+    <div style="text-align:center;max-width:780px;margin:0 auto 64px">
+      <h2>O que dizem quem participou das edições anteriores.</h2>
+      <div class="divider divider--center"></div>
+    </div>
+
+    <div class="depoimentos-grid">
+      <div class="depoimento-card">
+        <p>[Texto do depoimento — a inserir quando disponível. Priorizar depoimentos de perfis que representem o público-alvo: construtores, incorporadores, advogados, contadores.]</p>
+        <div class="autor">Nome do participante<span>Cargo &middot; Empresa &middot; Cidade &middot; Participante de edição XX</span></div>
+      </div>
+
+      <div class="depoimento-card">
+        <p>[Texto do depoimento — a inserir quando disponível.]</p>
+        <div class="autor">Nome do participante<span>Cargo &middot; Empresa &middot; Cidade &middot; Participante de edição XX</span></div>
+      </div>
+
+      <div class="depoimento-video" role="button" aria-label="Reproduzir depoimento em vídeo">
+        <div class="depoimento-video__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="depoimento-video__caption">Vídeo depoimento</div>
+      </div>
+
+      <div class="depoimento-video" role="button" aria-label="Reproduzir depoimento em vídeo">
+        <div class="depoimento-video__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="depoimento-video__caption">Vídeo depoimento</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA TERCIARIO REPETIDO ============ -->
+<section class="cta-reserva cta-reserva--bg-4">
+  <div class="cta-reserva__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-reserva__inner">
+      <h3>Reservar minha posição com prioridade</h3>
+      <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
+      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 5 — BENEFICIOS E MODALIDADES ============ -->
+<section class="section section--white">
+  <div class="container">
+    <div style="text-align:center;max-width:780px;margin:0 auto 64px">
+      <h2>Tudo o que está incluído na sua inscrição.</h2>
+      <div class="divider divider--center"></div>
+    </div>
+
+    <div class="modalidades-grid">
+      <article class="modalidade-card modalidade-card--gold">
+        <h3>Modalidade Presencial</h3>
+        <div class="sub">São Paulo</div>
+        <ul>
+          <li>Acesso completo aos dois dias de evento</li>
+          <li>Apostila geral do evento</li>
+          <li>Apresentações disponibilizadas pelos palestrantes</li>
+          <li>Participação com perguntas diretamente aos palestrantes</li>
+          <li>Acesso à gravação por 30 dias</li>
+          <li>Certificado de participação</li>
+          <li>Coffee breaks com espaço para networking</li>
+          <li>Coquetel de encerramento</li>
+        </ul>
+      </article>
+
+      <article class="modalidade-card">
+        <h3>Modalidade Online</h3>
+        <div class="sub">Transmissão ao vivo</div>
+        <ul>
+          <li>Transmissão ao vivo de todas as palestras</li>
+          <li>Apostila geral do evento</li>
+          <li>Apresentações disponibilizadas pelos palestrantes</li>
+          <li>Participação com perguntas via chat</li>
+          <li>Acesso à gravação por 30 dias</li>
+          <li>Certificado de participação</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="bonus-livros">
+      <p class="eyebrow" style="color:var(--ouro-claro)">Bônus opcional</p>
+      <h3>Kit de Livros Técnicos &middot; <span class="preco">R$ 600,00</span></h3>
+      <p style="color:rgba(234,231,228,.85)">Opcional para inscritos: os 3 livros da Dra. Martelene Carvalhaes por R$ 600,00, entregues presencialmente no evento.</p>
+      <ol>
+        <li>Patrimônio de Afetação, SPE, SCP e Consórcio — Estruturação de Negócios</li>
+        <li>Volume I — INSS da Construção Civil: Contratos de Construção e CNO de obras</li>
+        <li>Volume II — INSS da Construção Civil: Notas Fiscais, Retenções e Compensação de Tributos</li>
+      </ol>
+      <p class="obs">[Confirmar título 4º do livro com a Dra. Martelene]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA TERCIARIO REPETIDO ============ -->
+<section class="cta-reserva cta-reserva--bg-5">
+  <div class="cta-reserva__bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-reserva__inner">
+      <h3>Reservar minha posição com prioridade</h3>
+      <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
+      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 6 — INVESTIMENTO ============ -->
+<section class="section section--cream" id="investimento">
+  <div class="container">
+    <div style="text-align:center;max-width:780px;margin:0 auto 56px">
+      <h2>Quanto antes você se inscrever, menor o valor por parcela.</h2>
+      <div class="divider divider--center"></div>
+      <p>O investimento é escalonado por período de inscrição, facilitando o parcelamento.<br>As inscrições abrem em 1º de julho.</p>
+    </div>
+
+    <div class="tabela-invest">
+      <div class="tabela-invest__head">
+        <h3>Tabela de Investimento &middot; 12º Seminário Nacional</h3>
+        <span>Quanto antes, menor</span>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-row__periodo">Julho</div>
+        <div class="tabela-row__valor">4 parcelas de R$ 1.300,00 no boleto</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-row__periodo">Agosto</div>
+        <div class="tabela-row__valor">3 parcelas de R$ 1.750,00 no boleto</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-row__periodo">Setembro</div>
+        <div class="tabela-row__valor">2 parcelas de R$ 2.600,00 no boleto</div>
+      </div>
+      <div class="tabela-row">
+        <div class="tabela-row__periodo">Outubro</div>
+        <div class="tabela-row__valor">À vista ou parcelamento no cartão de crédito</div>
+      </div>
+    </div>
+
+    <div class="descontos">
+      <span class="descontos__selo">10%</span>
+      <span class="descontos__label">Desconto exclusivo</span>
+      <ul>
+        <li>Empresas com 2 ou mais inscritos</li>
+        <li>Clientes da MLF Consultoria e associados às instituições parceiras</li>
+        <li>Participantes de edições anteriores</li>
+        <li>Pagamento à vista</li>
+      </ul>
+    </div>
+
+    <div class="bonus-inline">
+      <!-- Cantos decorados -->
+      <span class="bonus-inline__corner bonus-inline__corner--tl" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none" stroke="#C49A3C" stroke-width="1"><path d="M2 16 L2 2 L16 2"/></svg>
+      </span>
+      <span class="bonus-inline__corner bonus-inline__corner--tr" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none" stroke="#C49A3C" stroke-width="1"><path d="M2 16 L2 2 L16 2"/></svg>
+      </span>
+      <span class="bonus-inline__corner bonus-inline__corner--bl" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none" stroke="#C49A3C" stroke-width="1"><path d="M2 16 L2 2 L16 2"/></svg>
+      </span>
+      <span class="bonus-inline__corner bonus-inline__corner--br" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none" stroke="#C49A3C" stroke-width="1"><path d="M2 16 L2 2 L16 2"/></svg>
+      </span>
+
+      <!-- Selo "EXCLUSIVO" -->
+      <span class="bonus-inline__seal" aria-hidden="true">
+        <svg viewBox="0 0 80 80">
+          <defs>
+            <path id="seal-circle" d="M40,40 m-26,0 a26,26 0 1,1 52,0 a26,26 0 1,1 -52,0"/>
+          </defs>
+          <circle cx="40" cy="40" r="36" fill="#FBF9F5" stroke="#C49A3C" stroke-width="1"/>
+          <circle cx="40" cy="40" r="32" fill="none" stroke="#C49A3C" stroke-width=".6" stroke-dasharray="1 3"/>
+          <!-- Estrela central -->
+          <path d="M40 30 L42 38 L50 38 L43.5 42.5 L46 50 L40 45.5 L34 50 L36.5 42.5 L30 38 L38 38 Z" fill="#C49A3C"/>
+          <text font-family="Montserrat, sans-serif" font-size="5.5" font-weight="700" fill="#C49A3C" letter-spacing="0.9">
+            <textPath href="#seal-circle" startOffset="14%">EXCLUSIVO</textPath>
+          </text>
+          <text font-family="Montserrat, sans-serif" font-size="5.5" font-weight="700" fill="#C49A3C" letter-spacing="0.9">
+            <textPath href="#seal-circle" startOffset="64%">BONUS</textPath>
+          </text>
+        </svg>
+      </span>
+
+      <div class="bonus-inline__ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+      <p class="bonus-inline__eyebrow">Bônus exclusivo</p>
+
+      <!-- SVG 3 livros redesenhado: empilhados em perspectiva isometrica leve -->
+      <svg class="bonus-inline__books" aria-hidden="true" viewBox="0 0 140 110">
+        <g fill="none" stroke="#A8801F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Livro 3 (base, maior) -->
+          <path d="M14 88 L118 88 L126 80 L22 80 Z" fill="rgba(2,115,140,0.06)"/>
+          <path d="M14 88 L14 96 L118 96 L118 88"/>
+          <path d="M118 88 L126 80 L126 88 L118 96"/>
+          <!-- paginas internas livro 3 -->
+          <line x1="28" y1="84" x2="118" y2="84" stroke-width=".8" opacity=".6"/>
+          <!-- ornamento lombada livro 3 -->
+          <line x1="58" y1="83" x2="74" y2="83" stroke-width=".8"/>
+          <circle cx="66" cy="83" r=".9" fill="#A8801F" stroke="none"/>
+
+          <!-- Livro 2 (meio) -->
+          <path d="M22 70 L110 70 L118 62 L30 62 Z" fill="rgba(2,115,140,0.08)"/>
+          <path d="M22 70 L22 78 L110 78 L110 70"/>
+          <path d="M110 70 L118 62 L118 70 L110 78"/>
+          <line x1="34" y1="66" x2="110" y2="66" stroke-width=".8" opacity=".6"/>
+          <line x1="60" y1="65" x2="72" y2="65" stroke-width=".8"/>
+          <circle cx="66" cy="65" r=".9" fill="#A8801F" stroke="none"/>
+
+          <!-- Livro 1 (topo, menor) -->
+          <path d="M32 52 L102 52 L110 44 L40 44 Z" fill="rgba(2,115,140,0.10)"/>
+          <path d="M32 52 L32 60 L102 60 L102 52"/>
+          <path d="M102 52 L110 44 L110 52 L102 60"/>
+          <line x1="42" y1="48" x2="102" y2="48" stroke-width=".8" opacity=".6"/>
+          <line x1="62" y1="47" x2="72" y2="47" stroke-width=".8"/>
+          <path d="M67 44.5 L68 46.5 L70 46.5 L68.5 47.7 L69 49.7 L67 48.5 L65 49.7 L65.5 47.7 L64 46.5 L66 46.5 Z" fill="#A8801F" stroke="none"/>
+
+          <!-- Marcador/fita -->
+          <path d="M86 44 L86 32 L90 36 L94 32 L94 44" stroke-width="1.2"/>
+        </g>
+      </svg>
+
+      <h4 class="bonus-inline__title">3 livros da Dra. Martelene Carvalhaes</h4>
+      <p class="bonus-inline__body">Inclua na sua inscrição por <span class="bonus-inline__price">R$ 600,00</span><br>Entrega presencial no evento.</p>
+
+      <ul class="bonus-inline__books-list">
+        <li><span class="num">I.</span><span>Patrimônio de Afetação, SPE, SCP e Consórcio — Estruturação de Negócios</span></li>
+        <li><span class="num">II.</span><span>Volume I — INSS da Construção Civil: Contratos de Construção e CNO de Obras</span></li>
+        <li><span class="num">III.</span><span>Volume II — INSS da Construção Civil: Notas Fiscais, Retenções e Compensação de Tributos</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA TERCIARIO REPETIDO + FORM RESERVA ============ -->
+<section class="lead-block" id="reserva-form">
+  <div class="lead-block__blob"></div>
+  <svg class="lead-block__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+
+  <div class="container">
+    <div class="lead-grid">
+      <div>
+        <h2>Reservar minha posição com prioridade</h2>
+        <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
+      </div>
+
+      <form class="form-card" onsubmit="event.preventDefault(); alert('Formulário de demonstração do preview.');">
+        <h3>Reservar minha posição</h3>
+        <p class="form-sub">acesso à tabela de julho antes da abertura</p>
+        <div class="field"><label for="r-nome">Nome</label><input id="r-nome" type="text" required></div>
+        <div class="field"><label for="r-email">E-mail</label><input id="r-email" type="email" required></div>
+        <div class="field"><label for="r-whats">WhatsApp</label><input id="r-whats" type="tel" required></div>
+        <div class="field"><label for="r-empresa">Empresa</label><input id="r-empresa" type="text" required></div>
+        <button type="submit" class="btn btn--teal btn--block btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 7 — FAQ ============ -->
+<section class="section section--white">
+  <div class="container">
+    <div style="text-align:center;max-width:780px;margin:0 auto 56px">
+      <h2>Dúvidas antes de decidir.</h2>
+      <div class="divider divider--center"></div>
+      <p class="muted" style="font-size:.95rem">Perguntas que mais recebemos por aqui</p>
+    </div>
+
+    <div class="faq">
+      <details class="faq-item">
+        <summary class="faq-q">Já acompanho o tema. Preciso mesmo do seminário?</summary>
+        <div class="faq-a">O problema raramente é a falta de conhecimento sobre o assunto. É a velocidade e o volume das mudanças em 2026 — e a necessidade de entender como cada peça se aplica especificamente ao seu modelo de negócio. O seminário não apresenta o tema. Traz atualização legislativa e aplicação na prática.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Vale o investimento?</summary>
+        <div class="faq-a">Uma única decisão tributária ou societária mal fundamentada pode custar muito mais do que o valor da inscrição. O seminário entrega clareza técnica para decisões que têm impacto real. Calcule o custo da incerteza no seu contexto — e compare.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">O online tem a mesma qualidade do presencial?</summary>
+        <div class="faq-a">A transmissão ao vivo cobre todos os módulos com a mesma qualidade de conteúdo. Você acompanha em tempo real, recebe as apresentações dos palestrantes, acessa a gravação por 30 dias e pode enviar perguntas via chat. A diferença é o networking e o ambiente presencial. Integração com demais participantes — não o conteúdo.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Posso participar se não atuo diretamente na construção civil?</summary>
+        <div class="faq-a">Sim, desde que você assessore, preste serviços ou tome decisões relacionadas ao setor. Advogados, contadores, consultores e gestores financeiros de empresas com operações no setor imobiliário e na construção civil são perfis frequentes nas edições do seminário.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">Os palestrantes convidados já foram confirmados?</summary>
+        <div class="faq-a">A coordenação técnica é da Dra. Martelene Carvalhaes, responsável pelo conteúdo desde a primeira edição. Os palestrantes convidados para as sessões técnicas serão divulgados a partir de julho de 2026.</div>
+      </details>
+    </div>
+
+    <div class="faq-cta">
+      <a href="https://wa.me/5511913735811?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%2012%C2%BA%20Semin%C3%A1rio%20Nacional" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg"><span>Falar com a equipe via WhatsApp</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+      <p class="muted" style="font-size:.85rem;margin-top:14px">Disponível no rodapé e em pontos de hesitação da página. Para quem tem dúvidas antes de decidir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCO 10 — FECHAMENTO ============ -->
+<div class="fechamento-wrap"><section class="fechamento">
+  <div class="container">
+    <span class="fechamento__divider" aria-hidden="true"></span>
+    <p class="fechamento__quote">O setor não para. As regras mudaram. As decisões continuam precisando ser tomadas, agora com uma complexidade maior e prazos mais curtos para adaptação.</p>
+    <p class="fechamento__highlight">O 12º Seminário Nacional existe para que você não precise tomar essas decisões no escuro.</p>
+  </div>
+</section></div>
+
+<!-- ============ RODAPÉ ============ -->
+<footer class="rodape">
+  <div class="rodape__blob"></div>
+  <svg class="rodape__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+
+  <div class="container">
+    <div class="rodape-head">
+      <div class="rodape-head__text">
+        <p class="eyebrow">Contatos</p>
+        <h3>Dúvidas? Fale com nossa equipe.</h3>
+        <p>Disponível por WhatsApp e e-mail para quem precisa de informações antes de decidir.</p>
+      </div>
+      <div class="rodape-head__cta">
+        <a href="https://wa.me/5511913735811" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg"><span>Falar com a equipe via WhatsApp</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+      </div>
+    </div>
+
+    <div class="rodape-grid">
+      <div>
+        <h5>Dados de contato</h5>
+        <p><strong style="color:var(--ouro)">WhatsApp:</strong> (11) 91373-5811<br><span class="muted" style="font-size:.85rem">(colocar todos os números)</span></p>
+        <p><strong style="color:var(--ouro)">E-mail:</strong><br>info@mlfconsultoria.com.br<br>mlf@mlfconsultoria.com.br</p>
+      </div>
+
+      <div>
+        <h5>Organização</h5>
+        <ul>
+          <li>Coordenação técnica:<br><strong style="color:var(--off-white)">Dra. Martelene Carvalhaes</strong></li>
+          <li>MC Editora e Treinamentos</li>
+          <li>MLF Consultoria Tributária</li>
+          <li>MC Sociedade de Advogados</li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Marcas e apoiadores</h5>
+        <p class="muted" style="font-size:.85rem">Logos das marcas</p>
+        <div class="rodape-logos">
+          <div class="logo-slot">[MC EDITORA]</div>
+          <div class="logo-slot">[MLF]</div>
+          <div class="logo-slot">[MC ADV]</div>
+        </div>
+        <p class="muted" style="font-size:.85rem;margin-top:16px">Logos dos apoiadores institucionais</p>
+        <div class="rodape-logos">
+          <div class="logo-slot">[APEOP]</div>
+          <div class="logo-slot">[APeMEC]</div>
+          <div class="logo-slot">[CREA-SP]</div>
+          <div class="logo-slot">[+demais]</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rodape-bottom">
+      &copy; 2026 12º Seminário Nacional de Tributação e Legislação da Construção Civil &middot; Todos os direitos reservados.
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WHATSAPP FLUTUANTE ============ -->
+<a href="https://wa.me/5511913735811?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%2012%C2%BA%20Semin%C3%A1rio%20Nacional" target="_blank" rel="noopener" class="whats-float" aria-label="Falar via WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.003 3.2C9.092 3.2 3.469 8.823 3.469 15.734c0 2.21.578 4.374 1.677 6.279L3.2 28.8l6.97-1.829a12.49 12.49 0 0 0 5.833 1.485h.005c6.91 0 12.53-5.624 12.534-12.534.002-3.348-1.3-6.498-3.667-8.866A12.45 12.45 0 0 0 16.003 3.2zm0 22.857h-.004a10.4 10.4 0 0 1-5.296-1.45l-.38-.226-3.93 1.031 1.049-3.83-.247-.393a10.37 10.37 0 0 1-1.589-5.555c.002-5.74 4.673-10.41 10.42-10.41 2.78 0 5.394 1.085 7.36 3.053a10.34 10.34 0 0 1 3.049 7.366c-.002 5.74-4.673 10.412-10.412 10.412zm5.713-7.798c-.313-.157-1.853-.913-2.14-1.017-.287-.105-.495-.157-.704.156s-.808 1.018-.99 1.226c-.183.21-.366.235-.679.078-.313-.157-1.32-.487-2.515-1.553-.93-.83-1.557-1.852-1.74-2.165-.183-.313-.02-.482.138-.638.142-.14.313-.366.469-.548.157-.183.21-.313.314-.522.105-.21.052-.392-.026-.548-.078-.157-.704-1.7-.965-2.327-.254-.61-.512-.527-.704-.537-.183-.01-.392-.012-.6-.012s-.548.078-.836.391c-.288.314-1.096 1.071-1.096 2.612s1.122 3.03 1.279 3.24c.157.21 2.213 3.376 5.36 4.733.748.323 1.332.515 1.788.659.751.239 1.435.205 1.976.124.604-.09 1.853-.758 2.114-1.49.261-.731.261-1.359.183-1.49-.078-.131-.286-.21-.6-.366z"/></svg>
+</a>
+
+</body>
+</html>
