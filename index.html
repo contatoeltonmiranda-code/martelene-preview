@@ -776,30 +776,34 @@ p{margin:0 0 1em}
 .modulo-card:nth-child(even){border-top-left-radius:64px}
 .modulo-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
 .modulo-card__head{
-  padding:36px 36px 24px;
+  padding:32px 36px;
   background:linear-gradient(135deg, var(--teal) 0%, var(--teal-escuro) 100%);
   color:var(--off-white);
   position:relative;overflow:hidden;
+  display:flex;align-items:center;gap:28px;min-height:160px;
 }
 .modulo-card__head::before{
   content:"";position:absolute;top:-30%;right:-20%;width:60%;height:160%;
   background:radial-gradient(circle, rgba(95,181,204,.25) 0%, transparent 70%);
   pointer-events:none;
 }
-.modulo-card__num{
-  font-family:var(--ff-titulo);font-size:11px;letter-spacing:.3em;
-  color:var(--ouro);font-weight:700;text-transform:uppercase;margin-bottom:8px;
-  position:relative;z-index:1;
+.modulo-card__badge{
+  display:flex;align-items:baseline;gap:10px;
+  flex-shrink:0;position:relative;z-index:1;
+  padding-right:24px;border-right:1px solid rgba(212,175,55,.35);
 }
 .modulo-card__roman{
-  font-family:var(--ff-titulo);font-size:3.2rem;font-weight:800;
+  font-family:var(--ff-titulo);font-size:3.8rem;font-weight:800;
   color:var(--ouro);line-height:1;letter-spacing:-0.04em;
-  margin-bottom:12px;position:relative;z-index:1;opacity:.95;
+}
+.modulo-card__num{
+  font-family:var(--ff-titulo);font-size:13px;letter-spacing:.28em;
+  color:var(--ouro);font-weight:700;text-transform:uppercase;
 }
 .modulo-card__title{
-  font-family:var(--ff-titulo);font-size:1.2rem;line-height:1.3;color:var(--branco);
-  font-weight:700;letter-spacing:-0.01em;margin-bottom:0;
-  position:relative;z-index:1;
+  font-family:var(--ff-titulo);font-size:1.55rem;line-height:1.22;color:var(--branco);
+  font-weight:700;letter-spacing:-0.015em;margin:0;
+  position:relative;z-index:1;flex:1;
 }
 .modulo-card__body{padding:28px 36px 40px;flex:1}
 .modulo-card__body ul{list-style:none;padding:0;margin:0}
@@ -1321,6 +1325,10 @@ p{margin:0 0 1em}
   .btn--lg .btn__icon{width:18px;height:18px}
   .topbar__inner{flex-direction:column;gap:8px}
   .modulo-card__head,.modulo-card__body{padding-left:28px;padding-right:28px}
+  .modulo-card__head{flex-direction:column;align-items:flex-start;gap:16px;min-height:auto;padding-top:28px;padding-bottom:24px}
+  .modulo-card__badge{padding-right:0;border-right:none;padding-bottom:14px;border-bottom:1px solid rgba(212,175,55,.35);width:100%}
+  .modulo-card__roman{font-size:3rem}
+  .modulo-card__title{font-size:1.3rem}
   .foto-dra{aspect-ratio:1/1}
   .autoridade-card{border-radius:var(--r-lg);border-top-right-radius:60px;border-bottom-right-radius:60px}
   .fechamento{border-radius:48px;margin:0 16px;padding:64px 0 72px}
@@ -1603,9 +1611,9 @@ FIM DOBRA 2 OCULTA -->
   <div class="cta-reserva__bg" aria-hidden="true"></div>
   <div class="container">
     <div class="cta-reserva__inner">
-      <h3>Reservar minha posição com prioridade</h3>
-      <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
-      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+      <h3>Garanta sua vaga no 12º Seminário Nacional</h3>
+      <p>Quanto antes você se inscrever, menor o investimento.</p>
+      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>GARANTIR MINHA VAGA</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
     </div>
   </div>
 </section>
@@ -1635,8 +1643,10 @@ FIM DOBRA 2 OCULTA -->
     <div class="modulos-grid">
       <article class="modulo-card">
         <div class="modulo-card__head">
-          <div class="modulo-card__num">Módulo</div>
-          <div class="modulo-card__roman">I</div>
+          <div class="modulo-card__badge">
+            <span class="modulo-card__roman">I</span>
+            <span class="modulo-card__num">Módulo</span>
+          </div>
           <h3 class="modulo-card__title">Reforma Tributária e os Desafios Concretos no Mercado Imobiliário</h3>
         </div>
         <div class="modulo-card__body">
@@ -1653,8 +1663,10 @@ FIM DOBRA 2 OCULTA -->
 
       <article class="modulo-card">
         <div class="modulo-card__head">
-          <div class="modulo-card__num">Módulo</div>
-          <div class="modulo-card__roman">II</div>
+          <div class="modulo-card__badge">
+            <span class="modulo-card__roman">II</span>
+            <span class="modulo-card__num">Módulo</span>
+          </div>
           <h3 class="modulo-card__title">Adaptação Estratégica e Novos Modelos de Negócios</h3>
         </div>
         <div class="modulo-card__body">
@@ -1671,8 +1683,10 @@ FIM DOBRA 2 OCULTA -->
 
       <article class="modulo-card">
         <div class="modulo-card__head">
-          <div class="modulo-card__num">Módulo</div>
-          <div class="modulo-card__roman">III</div>
+          <div class="modulo-card__badge">
+            <span class="modulo-card__roman">III</span>
+            <span class="modulo-card__num">Módulo</span>
+          </div>
           <h3 class="modulo-card__title">Mão de Obra, Contratos da Construção Civil e Industrialização</h3>
         </div>
         <div class="modulo-card__body">
@@ -1688,8 +1702,10 @@ FIM DOBRA 2 OCULTA -->
 
       <article class="modulo-card">
         <div class="modulo-card__head">
-          <div class="modulo-card__num">Módulo</div>
-          <div class="modulo-card__roman">IV</div>
+          <div class="modulo-card__badge">
+            <span class="modulo-card__roman">IV</span>
+            <span class="modulo-card__num">Módulo</span>
+          </div>
           <h3 class="modulo-card__title">Emissão de Documentos Fiscais, Contabilidade e Regularização</h3>
         </div>
         <div class="modulo-card__body">
