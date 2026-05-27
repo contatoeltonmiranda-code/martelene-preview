@@ -1006,13 +1006,26 @@ p{margin:0 0 1em}
 .modalidades-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:36px;
 }
+.dobra8__subtitle{
+  font-size:1.1rem;color:var(--teal);font-weight:500;font-style:italic;
+  margin:12px auto 0;max-width:640px;letter-spacing:-0.005em;
+  text-wrap:balance;
+}
 .modalidade-card{
   background:var(--branco);padding:48px;
   border-radius:0 0 var(--r-xl) var(--r-xl);
   box-shadow:var(--shadow-md);
   display:flex;flex-direction:column;position:relative;
-  overflow:hidden;
+  overflow:visible;
   border-top:4px solid var(--teal);
+}
+.modalidade-card__tag{
+  position:absolute;top:-18px;right:24px;
+  height:auto;max-height:44px;width:auto;z-index:3;
+  filter:drop-shadow(0 4px 12px rgba(196,154,60,.35));
+}
+@media (max-width:768px){
+  .modalidade-card__tag{max-height:36px;right:16px;top:-14px}
 }
 .modalidade-card--gold{
   background:linear-gradient(180deg, var(--branco) 0%, var(--off-white) 100%);
@@ -1913,11 +1926,13 @@ FIM DOBRA 2 OCULTA -->
   <div class="container">
     <div style="text-align:center;max-width:780px;margin:0 auto 64px">
       <h2>Tudo o que está incluído na sua inscrição.</h2>
+      <p class="dobra8__subtitle">O conteúdo é o mesmo, o ambiente é diferente.</p>
       <div class="divider divider--center"></div>
     </div>
 
     <div class="modalidades-grid">
       <article class="modalidade-card modalidade-card--gold">
+        <img src="assets/Tag VAGAS LIMITADAS.png" alt="Vagas limitadas" class="modalidade-card__tag">
         <h3>Modalidade Presencial</h3>
         <div class="sub">São Paulo</div>
         <ul>
@@ -1936,8 +1951,8 @@ FIM DOBRA 2 OCULTA -->
         <h3>Modalidade Online</h3>
         <div class="sub">Transmissão ao vivo</div>
         <ul>
-          <li>Transmissão ao vivo de todas as palestras</li>
-          <li>Apostila geral do evento</li>
+          <li>Transmissão ao vivo de todas as palestras e debates nos dois dias de evento</li>
+          <li>Apostila digital</li>
           <li>Apresentações disponibilizadas pelos palestrantes</li>
           <li>Participação com perguntas via chat</li>
           <li>Acesso à gravação por 30 dias</li>
@@ -1946,17 +1961,8 @@ FIM DOBRA 2 OCULTA -->
       </article>
     </div>
 
-    <div class="bonus-livros">
-      <p class="eyebrow" style="color:var(--ouro-claro)">Bônus opcional</p>
-      <h3>Kit de Livros Técnicos &middot; <span class="preco">R$ 600,00</span></h3>
-      <p style="color:rgba(234,231,228,.85)">Opcional para inscritos: os 3 livros da Dra. Martelene Carvalhaes por R$ 600,00, entregues presencialmente no evento.</p>
-      <ol>
-        <li>Patrimônio de Afetação, SPE, SCP e Consórcio — Estruturação de Negócios</li>
-        <li>Volume I — INSS da Construção Civil: Contratos de Construção e CNO de obras</li>
-        <li>Volume II — INSS da Construção Civil: Notas Fiscais, Retenções e Compensação de Tributos</li>
-      </ol>
-      <p class="obs">[Confirmar título 4º do livro com a Dra. Martelene]</p>
-    </div>
+    <!-- Bonus opcional Kit de Livros movido para apos investimento (bonus-inline). Mantido apenas la para evitar duplicacao. -->
+
   </div>
 </section>
 
@@ -1965,9 +1971,9 @@ FIM DOBRA 2 OCULTA -->
   <div class="cta-reserva__bg" aria-hidden="true"></div>
   <div class="container">
     <div class="cta-reserva__inner">
-      <h3>Reservar minha posição com prioridade</h3>
-      <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
-      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+      <h3>Escolha a modalidade que melhor se adapta a sua realidade e garanta sua vaga.</h3>
+      <p>Presencial em São Paulo ou online ao vivo. O conteúdo técnico é o mesmo. A decisão é sua.</p>
+      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>GARANTIR MINHA VAGA</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
     </div>
   </div>
 </section>
