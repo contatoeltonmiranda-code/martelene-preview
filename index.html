@@ -1117,6 +1117,12 @@ p{margin:0 0 1em}
   width:8px;height:28px;background:var(--ouro);border-radius:2px;
 }
 .tabela-row__valor{color:var(--quase-preto);font-size:1.05rem;font-weight:500}
+.tabela-row__valor sup{color:var(--ouro);font-size:.7em;font-weight:700;margin-left:2px}
+.tabela-invest__nota{
+  max-width:760px;margin:18px auto 0;text-align:center;
+  font-size:.86rem;color:rgba(16,41,50,.66);line-height:1.5;
+  font-style:italic;letter-spacing:.005em;
+}
 .descontos{
   margin:36px auto 0;max-width:920px;
   background:linear-gradient(180deg, var(--teal) 0%, var(--teal-escuro) 100%);
@@ -1199,6 +1205,41 @@ p{margin:0 0 1em}
   font-weight:700;margin:0 0 22px;
 }
 .bonus-inline__books{width:132px;height:auto;display:block;margin:0 auto 22px}
+/* Grid de 3 capas reais */
+.bonus-inline__covers{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  max-width:560px;margin:0 auto 28px;align-items:end;
+}
+.bonus-inline__cover{
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  transition:transform .3s ease;
+}
+.bonus-inline__cover:hover{transform:translateY(-4px)}
+.bonus-inline__cover-img{
+  width:100%;max-width:160px;height:auto;display:block;
+  box-shadow:
+    0 18px 38px -10px rgba(16,41,50,.32),
+    0 4px 10px rgba(16,41,50,.12),
+    inset 0 0 0 1px rgba(196,154,60,.18);
+  border-radius:2px;
+  background:#fff;
+}
+.bonus-inline__cover--left .bonus-inline__cover-img{transform:perspective(800px) rotateY(8deg)}
+.bonus-inline__cover--right .bonus-inline__cover-img{transform:perspective(800px) rotateY(-8deg)}
+.bonus-inline__cover-label{
+  font-family:var(--ff-titulo);font-weight:600;font-size:.78rem;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--azul-profundo);
+  text-align:center;line-height:1.35;
+}
+.bonus-inline__cover-label .vol{
+  display:block;color:var(--ouro);font-weight:700;font-size:.72rem;
+  letter-spacing:.18em;margin-bottom:4px;
+}
+@media (max-width:640px){
+  .bonus-inline__covers{gap:14px;max-width:100%}
+  .bonus-inline__cover-img{max-width:100%}
+  .bonus-inline__cover-label{font-size:.7rem}
+}
 .bonus-inline__title{
   font-family:var(--ff-titulo);font-weight:700;letter-spacing:-0.02em;
   font-size:clamp(1.5rem,2.4vw,1.75rem);color:var(--azul-profundo);
@@ -1984,7 +2025,7 @@ FIM DOBRA 2 OCULTA -->
     <div style="text-align:center;max-width:780px;margin:0 auto 56px">
       <h2>Quanto antes você se inscrever, menor o valor por parcela.</h2>
       <div class="divider divider--center"></div>
-      <p>O investimento é escalonado por período de inscrição, facilitando o parcelamento.<br>As inscrições abrem em 1º de julho.</p>
+      <p>O investimento é escalonado por período de inscrição, facilitando o parcelamento.</p>
     </div>
 
     <div class="tabela-invest">
@@ -1994,21 +2035,22 @@ FIM DOBRA 2 OCULTA -->
       </div>
       <div class="tabela-row">
         <div class="tabela-row__periodo">Julho</div>
-        <div class="tabela-row__valor">4 parcelas de R$ 1.300,00 no boleto</div>
+        <div class="tabela-row__valor">4 parcelas de R$ 1.300,00 no boleto/PIX ou parcelamento no cartão de crédito <sup>(*)</sup></div>
       </div>
       <div class="tabela-row">
         <div class="tabela-row__periodo">Agosto</div>
-        <div class="tabela-row__valor">3 parcelas de R$ 1.750,00 no boleto</div>
+        <div class="tabela-row__valor">3 parcelas de R$ 1.750,00 no boleto/PIX ou parcelamento no cartão de crédito <sup>(*)</sup></div>
       </div>
       <div class="tabela-row">
         <div class="tabela-row__periodo">Setembro</div>
-        <div class="tabela-row__valor">2 parcelas de R$ 2.600,00 no boleto</div>
+        <div class="tabela-row__valor">2 parcelas de R$ 2.600,00 no boleto/PIX ou parcelamento no cartão de crédito <sup>(*)</sup></div>
       </div>
       <div class="tabela-row">
         <div class="tabela-row__periodo">Outubro</div>
-        <div class="tabela-row__valor">À vista ou parcelamento no cartão de crédito</div>
+        <div class="tabela-row__valor">À vista no cartão de crédito <sup>(*)</sup></div>
       </div>
     </div>
+    <p class="tabela-invest__nota"><em>(*) Parcelamento em até 2x no cartão de crédito sem juros ou em até 18x com juros da operadora.</em></p>
 
     <div class="descontos">
       <span class="descontos__selo">10%</span>
@@ -2058,48 +2100,23 @@ FIM DOBRA 2 OCULTA -->
       <div class="bonus-inline__ornament" aria-hidden="true"><span></span><i></i><span></span></div>
       <p class="bonus-inline__eyebrow">Bônus exclusivo</p>
 
-      <!-- SVG 3 livros redesenhado: empilhados em perspectiva isometrica leve -->
-      <svg class="bonus-inline__books" aria-hidden="true" viewBox="0 0 140 110">
-        <g fill="none" stroke="#A8801F" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-          <!-- Livro 3 (base, maior) -->
-          <path d="M14 88 L118 88 L126 80 L22 80 Z" fill="rgba(2,115,140,0.06)"/>
-          <path d="M14 88 L14 96 L118 96 L118 88"/>
-          <path d="M118 88 L126 80 L126 88 L118 96"/>
-          <!-- paginas internas livro 3 -->
-          <line x1="28" y1="84" x2="118" y2="84" stroke-width=".8" opacity=".6"/>
-          <!-- ornamento lombada livro 3 -->
-          <line x1="58" y1="83" x2="74" y2="83" stroke-width=".8"/>
-          <circle cx="66" cy="83" r=".9" fill="#A8801F" stroke="none"/>
-
-          <!-- Livro 2 (meio) -->
-          <path d="M22 70 L110 70 L118 62 L30 62 Z" fill="rgba(2,115,140,0.08)"/>
-          <path d="M22 70 L22 78 L110 78 L110 70"/>
-          <path d="M110 70 L118 62 L118 70 L110 78"/>
-          <line x1="34" y1="66" x2="110" y2="66" stroke-width=".8" opacity=".6"/>
-          <line x1="60" y1="65" x2="72" y2="65" stroke-width=".8"/>
-          <circle cx="66" cy="65" r=".9" fill="#A8801F" stroke="none"/>
-
-          <!-- Livro 1 (topo, menor) -->
-          <path d="M32 52 L102 52 L110 44 L40 44 Z" fill="rgba(2,115,140,0.10)"/>
-          <path d="M32 52 L32 60 L102 60 L102 52"/>
-          <path d="M102 52 L110 44 L110 52 L102 60"/>
-          <line x1="42" y1="48" x2="102" y2="48" stroke-width=".8" opacity=".6"/>
-          <line x1="62" y1="47" x2="72" y2="47" stroke-width=".8"/>
-          <path d="M67 44.5 L68 46.5 L70 46.5 L68.5 47.7 L69 49.7 L67 48.5 L65 49.7 L65.5 47.7 L64 46.5 L66 46.5 Z" fill="#A8801F" stroke="none"/>
-
-          <!-- Marcador/fita -->
-          <path d="M86 44 L86 32 L90 36 L94 32 L94 44" stroke-width="1.2"/>
-        </g>
-      </svg>
-
       <h4 class="bonus-inline__title">3 livros da Dra. Martelene Carvalhaes</h4>
-      <p class="bonus-inline__body">Inclua na sua inscrição por <span class="bonus-inline__price">R$ 600,00</span><br>Entrega presencial no evento.</p>
+      <p class="bonus-inline__body" style="margin-bottom:32px">Inclua na sua inscrição por <span class="bonus-inline__price">R$ 600,00</span><br>Entrega presencial no evento.</p>
 
-      <ul class="bonus-inline__books-list">
-        <li><span class="num">I.</span><span>Patrimônio de Afetação, SPE, SCP e Consórcio — Estruturação de Negócios</span></li>
-        <li><span class="num">II.</span><span>Volume I — INSS da Construção Civil: Contratos de Construção e CNO de Obras</span></li>
-        <li><span class="num">III.</span><span>Volume II — INSS da Construção Civil: Notas Fiscais, Retenções e Compensação de Tributos</span></li>
-      </ul>
+      <div class="bonus-inline__covers">
+        <div class="bonus-inline__cover bonus-inline__cover--left">
+          <img class="bonus-inline__cover-img" src="assets/livro1-patrimonio-afetacao.png" alt="Patrimônio de Afetação, SPE, SCP e Consórcio — Estruturação de Negócios" loading="lazy">
+          <span class="bonus-inline__cover-label"><span class="vol">Volume I</span>Patrimônio de Afetação, SPE, SCP e Consórcio</span>
+        </div>
+        <div class="bonus-inline__cover bonus-inline__cover--center">
+          <img class="bonus-inline__cover-img" src="assets/livro2-inss-vol1.png" alt="INSS da Construção Civil — Volume 1: Contratos e CNO de Obras" loading="lazy">
+          <span class="bonus-inline__cover-label"><span class="vol">Volume II</span>INSS Construção — Contratos e CNO</span>
+        </div>
+        <div class="bonus-inline__cover bonus-inline__cover--right">
+          <img class="bonus-inline__cover-img" src="assets/livro3-inss-vol2.png" alt="INSS da Construção Civil — Volume 2: Notas Fiscais, Retenções e Compensação" loading="lazy">
+          <span class="bonus-inline__cover-label"><span class="vol">Volume III</span>INSS Construção — Retenções e Compensação</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2112,18 +2129,20 @@ FIM DOBRA 2 OCULTA -->
   <div class="container">
     <div class="lead-grid">
       <div>
-        <h2>Reservar minha posição com prioridade</h2>
-        <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
+        <h2>A reforma tributária não espera. Sua empresa pode esperar?</h2>
+        <p>Cada mês sem clareza técnica sobre o novo cenário tributário é um mês de decisões tomadas no escuro, seja nos contratos, estruturas societárias, distribuição de lucros quanto a emissão de notas fiscais.</p>
+        <p>O investimento no 12º Seminário Nacional não é um custo. É o que separa quem vai atravessar a transição com segurança de quem vai descobrir os erros depois de cometê-los.</p>
+        <p><strong>Preencha o formulário e garanta sua vaga.</strong></p>
       </div>
 
       <form class="form-card" onsubmit="event.preventDefault(); alert('Formulário de demonstração do preview.');">
-        <h3>Reservar minha posição</h3>
-        <p class="form-sub">acesso à tabela de julho antes da abertura</p>
+        <h3>Garantir minha vaga</h3>
+        <p class="form-sub">Quem se prepara hoje decide melhor amanhã.</p>
         <div class="field"><label for="r-nome">Nome</label><input id="r-nome" type="text" required></div>
         <div class="field"><label for="r-email">E-mail</label><input id="r-email" type="email" required></div>
         <div class="field"><label for="r-whats">WhatsApp</label><input id="r-whats" type="tel" required></div>
         <div class="field"><label for="r-empresa">Empresa</label><input id="r-empresa" type="text" required></div>
-        <button type="submit" class="btn btn--teal btn--block btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
+        <button type="submit" class="btn btn--teal btn--block btn--lg"><span>GARANTIR MINHA VAGA</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></button>
       </form>
     </div>
   </div>
