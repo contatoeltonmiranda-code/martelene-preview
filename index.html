@@ -849,10 +849,25 @@ p{margin:0 0 1em}
   margin-bottom:28px;position:relative;z-index:1;
 }
 .autoridade-card p{color:rgba(234,231,228,.92);font-size:1.02rem;line-height:1.75;position:relative;z-index:1}
-.autoridade-card .destaque{
+.autoridade-card .bio-h1{
+  font-family:var(--ff-titulo);
+  font-size:clamp(1.55rem,2.4vw,1.95rem);
+  font-weight:700;letter-spacing:-0.025em;line-height:1.22;
+  color:var(--branco);
+  margin-bottom:24px;
+}
+.autoridade-card .bio-h2{
+  font-size:.98rem;line-height:1.7;
+  color:rgba(234,231,228,.88);
+  margin-bottom:24px;
+}
+.autoridade-card .destaque,
+.autoridade-card .bio-h3{
   font-family:var(--ff-titulo);font-style:italic;font-weight:500;
-  color:var(--ouro-claro);font-size:1.1rem;line-height:1.6;
-  margin-top:24px;
+  color:var(--ouro-claro);font-size:.98rem;line-height:1.55;
+  margin-top:0;
+  padding-top:20px;
+  border-top:1px solid rgba(196,154,60,.28);
 }
 .foto-dra{
   background:linear-gradient(135deg, var(--azul-profundo) 0%, var(--quase-preto) 100%);
@@ -914,6 +929,38 @@ p{margin:0 0 1em}
 }
 .palestrantes p,.apoiadores p{margin:0;color:var(--quase-preto);font-size:.95rem;line-height:1.6}
 .apoiadores .obs{font-size:.82rem;color:var(--cinza);margin-top:10px;font-style:italic}
+.realiza-org{
+  padding:24px 28px;
+  background:rgba(2,115,140,.07);
+  border-radius:var(--r-lg);
+  border-left:3px solid var(--teal);
+  display:flex;flex-direction:column;gap:18px;
+}
+.realiza-org__linha{
+  display:flex;align-items:center;gap:24px;
+  padding:8px 0;
+}
+.realiza-org__linha + .realiza-org__linha{
+  border-top:1px solid rgba(2,115,140,.18);
+  padding-top:18px;
+}
+.realiza-org__label{
+  font-family:var(--ff-corpo);font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;font-size:12px;color:var(--teal);
+  flex-shrink:0;min-width:120px;
+}
+.realiza-org__logos{
+  display:flex;align-items:center;gap:32px;flex-wrap:wrap;flex:1;
+}
+.realiza-org__logos img{
+  height:72px;width:auto;max-width:100%;object-fit:contain;display:block;
+}
+@media (max-width:768px){
+  .realiza-org__linha{flex-direction:column;align-items:flex-start;gap:14px}
+  .realiza-org__label{min-width:0}
+  .realiza-org__logos{gap:20px}
+  .realiza-org__logos img{height:56px}
+}
 
 /* ============ PROVA SOCIAL ============ */
 .depoimentos-grid{
@@ -1741,10 +1788,9 @@ FIM DOBRA 2 OCULTA -->
   <div class="container">
     <div class="autoridade-grid">
       <div class="autoridade-card">
-        <h2>Coordenação técnica de quem passou mais de 30 anos exclusivamente dentro desse setor.</h2>
-        <p>Dra. Martelene Carvalhaes Pereira e Souza é advogada tributarista e contadora, professora e escritora, com atuação exclusiva no setor imobiliário e da construção civil há mais de 30 anos. Autora de livros técnicos de referência no setor, ministra treinamentos para capacitação técnica há mais de 20 anos em todo o país.</p>
-        <p>É sócia da MC Sociedade de Advogados e da MLF Consultoria Tributária, e membro do CONJUR - Conselho Jurídico da CBIC.</p>
-        <p class="destaque">Organiza o Seminário Nacional desde a primeira edição. Não como evento. Como um compromisso técnico com o setor.</p>
+        <h2 class="bio-h1">Dra. Martelene Carvalhaes Pereira e Souza é advogada tributarista e contadora, professora e escritora, com atuação exclusiva no setor imobiliário e da construção civil há mais de 30 anos.</h2>
+        <p class="bio-h2">Autora de livros técnicos de referência no setor, ministra treinamentos para capacitação técnica há mais de 20 anos em todo o país. É sócia da MC Sociedade de Advogados e da MLF Consultoria Tributária, e membro do CONJUR — Conselho Jurídico da CBIC.</p>
+        <p class="destaque bio-h3">Organiza o Seminário Nacional desde a primeira edição. Não como evento. Como um compromisso técnico com o setor.</p>
       </div>
 
       <div class="foto-dra">
@@ -1786,10 +1832,20 @@ FIM DOBRA 2 OCULTA -->
           <p>Os especialistas convidados para as sessões técnicas serão divulgados a partir de julho de 2026.</p>
         </div>
 
-        <div class="apoiadores">
-          <h4>Apoiadores institucionais</h4>
-          <p>Ano anterior: APEOP, APeMEC, CREA-SP, SindusconSP, Sinduscon-PA, Sinduscon-Rio, Sinduscon GO, Sinduscon da BA.</p>
-          <p class="obs">(Atualizar conforme novas confirmações — CONFIRMAR COM TODOS ELES, ANTES DE DIVULGAR)</p>
+        <div class="realiza-org">
+          <div class="realiza-org__linha">
+            <span class="realiza-org__label">Realização:</span>
+            <div class="realiza-org__logos">
+              <img src="assets/Logo_MC_Editora.png" alt="MC Editora e Treinamentos">
+            </div>
+          </div>
+          <div class="realiza-org__linha">
+            <span class="realiza-org__label">Organização:</span>
+            <div class="realiza-org__logos">
+              <img src="assets/Logo_MC_Advocacia.png" alt="Martelene Carvalhaes Sociedade de Advogados">
+              <img src="assets/Logo_MLF.png" alt="MLF Consultoria Tributária">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1801,9 +1857,9 @@ FIM DOBRA 2 OCULTA -->
   <div class="cta-reserva__bg" aria-hidden="true"></div>
   <div class="container">
     <div class="cta-reserva__inner">
-      <h3>Reservar minha posição com prioridade</h3>
-      <p>Formulário simples para quem quer garantir acesso à tabela de menor preço antes da abertura oficial.</p>
-      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>Reservar minha posição</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+      <h3>Há mais de 30 anos, ela é a referência técnica do setor.</h3>
+      <p>Garanta sua vaga e aprenda diretamente com quem mais entende de tributação e legislação da construção civil no Brasil.</p>
+      <a href="#reserva-form" class="btn btn--primary btn--lg"><span>GARANTIR MINHA VAGA</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
     </div>
   </div>
 </section>
