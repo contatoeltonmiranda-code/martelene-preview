@@ -306,9 +306,35 @@ p{margin:0 0 1em}
     radial-gradient(120% 80% at 100% 0%, #5FB5CC 0%, rgba(95,181,204,.4) 30%, transparent 55%),
     linear-gradient(135deg, var(--teal) 0%, var(--teal-escuro) 50%, var(--azul-profundo) 100%);
   color:var(--off-white);
-  padding:70px 0 65px;
+  padding:clamp(28px,5vh,48px) 0;
   overflow:hidden;
   text-align:center;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+}
+.hero__brand{
+  display:flex;flex-direction:column;align-items:center;
+  gap:14px;margin-bottom:clamp(16px,2vh,24px);
+}
+.hero__tag-unico{
+  display:block;width:auto;max-width:180px;height:auto;
+  transform-origin:center center;
+  animation:tag-entrance .9s cubic-bezier(.2,.7,.2,1.05) both, tag-float 6s ease-in-out 1s infinite;
+  filter:drop-shadow(0 6px 18px rgba(0,0,0,.25));
+  will-change:transform;
+}
+@keyframes tag-entrance{
+  0%{opacity:0;transform:scale(.6) rotate(-12deg)}
+  60%{opacity:1;transform:scale(1.08) rotate(4deg)}
+  100%{opacity:1;transform:scale(1) rotate(0deg)}
+}
+@keyframes tag-float{
+  0%,100%{transform:scale(1) rotate(-2deg)}
+  50%{transform:scale(1.04) rotate(2deg)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero__tag-unico{animation:none}
 }
 .hero__blob{
   position:absolute;
@@ -342,49 +368,53 @@ p{margin:0 0 1em}
 }
 .hero .container{max-width:1180px;position:relative;z-index:2}
 .hero__edition{
-  display:block;margin:0 auto 36px;max-width:320px;width:100%;height:auto;
+  display:block;margin:0 auto;max-width:clamp(180px,18vh,240px);width:100%;height:auto;
 }
 .hero h1{
   color:var(--branco);
   font-family:var(--ff-titulo);
-  font-weight:700;
+  font-weight:800;
   letter-spacing:-0.025em;
-  font-size:clamp(2rem, 4vw, 3.4rem);
-  line-height:1.12;
-  margin-bottom:28px;
-  max-width:1180px;
+  font-size:clamp(1.75rem,3.2vw,2.9rem);
+  line-height:1.14;
+  margin-bottom:clamp(14px,1.8vh,22px);
+  max-width:1100px;
   margin-left:auto;margin-right:auto;
   text-wrap:pretty;
 }
-.hero__evento{
-  font-family:var(--ff-titulo);
+.hero__h2{
   color:var(--ouro-claro);
-  font-size:clamp(1rem,1.4vw,1.15rem);
-  font-style:italic;font-weight:500;
-  letter-spacing:.02em;
-  margin-bottom:32px;
-  max-width:760px;margin-left:auto;margin-right:auto;
+  font-family:var(--ff-titulo);
+  font-weight:500;
+  font-size:clamp(.92rem,1.15vw,1.08rem);
+  line-height:1.45;
+  letter-spacing:.01em;
+  margin:0 auto clamp(8px,1.2vh,14px);
+  max-width:780px;
+  text-wrap:balance;
+  opacity:.92;
 }
 .hero__sub{
-  max-width:760px;
-  margin:0 auto 16px;
-  font-size:1.05rem;line-height:1.75;
-  color:rgba(234,231,228,.92);
+  max-width:720px;
+  margin:0 auto clamp(12px,1.8vh,20px);
+  font-size:clamp(.78rem,.92vw,.9rem);
+  line-height:1.55;
+  color:rgba(234,231,228,.78);
   letter-spacing:.005em;
-}
-.hero__apoio{
-  max-width:1040px;margin:0 auto 44px;font-size:.98rem;line-height:1.75;
-  color:rgba(234,231,228,.72);
-  text-wrap:balance;
+  font-style:italic;
 }
 .hero__meta{
   display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;
   gap:8px 14px;
-  padding:24px 0;
-  margin:0 auto 36px;
+  padding:clamp(12px,1.6vh,18px) 0;
+  margin:0 auto clamp(16px,2.2vh,24px);
   max-width:1200px;
   border-top:1px solid rgba(196,154,60,.25);
   border-bottom:1px solid rgba(196,154,60,.25);
+}
+.hero__meta__item--tag{padding:0}
+.hero__meta__tag{
+  display:block;height:36px;width:auto;
 }
 .hero__meta__item{
   display:inline-flex;align-items:center;gap:8px;
@@ -1271,10 +1301,12 @@ p{margin:0 0 1em}
 /* ============ RESPONSIVO ============ */
 @media (max-width: 980px){
   .section{padding:var(--gap-secao-mob) 0}
-  .hero{padding:45px 0 40px}
+  .hero{padding:45px 0 40px;min-height:auto;display:block}
   .hero__meta{flex-wrap:wrap;gap:12px 18px;padding:20px 14px;font-size:13px}
   .hero__meta__item{font-size:13px}
   .hero__meta__item svg{width:16px;height:16px}
+  .hero__meta__tag{height:30px}
+  .hero__tag-unico{max-width:150px}
   .lead-grid,.cenario-grid,.modulos-grid,.modalidades-grid,
   .depoimentos-grid,.autoridade-grid,.rodape-grid,.palestrantes-row{grid-template-columns:1fr;gap:36px}
   .credenciais{grid-template-columns:1fr}
@@ -1299,8 +1331,10 @@ p{margin:0 0 1em}
 }
 @media (max-width: 480px){
   .container{padding:0 18px}
-  .hero h1{font-size:1.7rem}
-  .hero__edition{max-width:220px;margin-bottom:28px}
+  .hero h1{font-size:1.55rem;line-height:1.18}
+  .hero__h2{font-size:.85rem;line-height:1.4}
+  .hero__sub{font-size:.75rem;line-height:1.5}
+  .hero__edition{max-width:180px}
 }
 </style>
 </head>
@@ -1403,11 +1437,13 @@ p{margin:0 0 1em}
   <svg class="hero__wireframe hero__wireframe--left" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
 
   <div class="container">
-    <img class="hero__edition" src="assets/logo-seminario-banco.png" alt="12º Seminário Nacional de Tributação e Legislação da Construção Civil — 22 e 23 de outubro de 2026">
-    <h1>É a oportunidade que você precisa para sair na frente em um dos momentos mais críticos do setor, com foco <span style="white-space:nowrap">exclusivo e especializado</span></h1>
-    <div class="hero__evento">12º Seminário Nacional de Tributação e Legislação da Construção Civil</div>
+    <div class="hero__brand">
+      <img class="hero__edition" src="assets/logo-seminario-banco.png" alt="12º Seminário Nacional de Tributação e Legislação da Construção Civil — 22 e 23 de outubro de 2026">
+      <img class="hero__tag-unico" src="assets/Tag UNICO EVENTO DO BRASIL.png" alt="Único evento do Brasil">
+    </div>
+    <h1>Adaptação Estratégica aos Novos Modelos de Negócios no Ambiente em Transformação no Setor Imobiliário e Construção Civil</h1>
+    <h2 class="hero__h2">É a oportunidade que você precisa para sair na frente em um dos momentos mais críticos do setor, com foco <span style="white-space:nowrap">exclusivo e especializado</span></h2>
     <p class="hero__sub">A reforma exigirá uma complexa engenharia tributária para manter a competitividade num período convivendo com novos e antigos tributos.</p>
-    <p class="hero__apoio">Sustentabilidade, tecnologia, eficiência e viabilidade financeira são os eixos que garantem os negócios, isto envolve a aquisição de materiais, a contratação da mão de obra e <span style="white-space:nowrap">locação de equipamentos.</span></p>
 
     <div class="hero__meta">
       <span class="hero__meta__item">
@@ -1420,9 +1456,8 @@ p{margin:0 0 1em}
         São Paulo
       </span>
       <span class="hero__meta__sep">·</span>
-      <span class="hero__meta__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        Presencial e Online
+      <span class="hero__meta__item hero__meta__item--tag">
+        <img class="hero__meta__tag" src="assets/Tag PRESENCIAL E ONLINE.png" alt="Presencial e Online">
       </span>
       <span class="hero__meta__sep">·</span>
       <span class="hero__meta__item">
