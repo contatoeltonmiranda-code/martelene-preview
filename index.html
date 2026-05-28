@@ -1207,34 +1207,42 @@ p{margin:0 0 1em}
 .bonus-inline__books{width:132px;height:auto;display:block;margin:0 auto 22px}
 /* Grid de 3 capas reais */
 .bonus-inline__covers{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
-  max-width:560px;margin:0 auto 28px;align-items:end;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:44px;
+  max-width:1040px;margin:0 auto 36px;align-items:end;
 }
 .bonus-inline__cover{
-  display:flex;flex-direction:column;align-items:center;gap:14px;
+  display:flex;flex-direction:column;align-items:center;gap:18px;
   transition:transform .3s ease;
 }
 .bonus-inline__cover:hover{transform:translateY(-4px)}
 .bonus-inline__cover-img{
-  width:100%;max-width:160px;height:auto;display:block;
+  width:100%;max-width:300px;height:auto;display:block;
   background:transparent;
-  filter:drop-shadow(0 14px 24px rgba(16,41,50,.28)) drop-shadow(0 4px 8px rgba(16,41,50,.14));
+  filter:drop-shadow(0 18px 32px rgba(16,41,50,.32)) drop-shadow(0 6px 12px rgba(16,41,50,.16));
 }
-.bonus-inline__cover--left .bonus-inline__cover-img{transform:perspective(800px) rotateY(8deg)}
-.bonus-inline__cover--right .bonus-inline__cover-img{transform:perspective(800px) rotateY(-8deg)}
+.bonus-inline__cover--left .bonus-inline__cover-img{transform:perspective(900px) rotateY(8deg)}
+.bonus-inline__cover--right .bonus-inline__cover-img{transform:perspective(900px) rotateY(-8deg)}
 .bonus-inline__cover-label{
-  font-family:var(--ff-titulo);font-weight:600;font-size:.78rem;
+  font-family:var(--ff-titulo);font-weight:600;font-size:.85rem;
   letter-spacing:.06em;text-transform:uppercase;color:var(--azul-profundo);
-  text-align:center;line-height:1.35;
+  text-align:center;line-height:1.4;
 }
 .bonus-inline__cover-label .vol{
-  display:block;color:var(--ouro);font-weight:700;font-size:.72rem;
-  letter-spacing:.18em;margin-bottom:4px;
+  display:block;color:var(--ouro);font-weight:700;font-size:.75rem;
+  letter-spacing:.18em;margin-bottom:6px;
+}
+@media (max-width:900px){
+  .bonus-inline__covers{gap:24px;max-width:100%}
+  .bonus-inline__cover-img{max-width:220px}
 }
 @media (max-width:640px){
-  .bonus-inline__covers{gap:14px;max-width:100%}
-  .bonus-inline__cover-img{max-width:100%}
-  .bonus-inline__cover-label{font-size:.7rem}
+  .bonus-inline__covers{
+    grid-template-columns:1fr;gap:32px;max-width:320px;
+  }
+  .bonus-inline__cover-img{max-width:260px}
+  .bonus-inline__cover-label{font-size:.78rem}
+  .bonus-inline__cover--left .bonus-inline__cover-img,
+  .bonus-inline__cover--right .bonus-inline__cover-img{transform:none}
 }
 .bonus-inline__title{
   font-family:var(--ff-titulo);font-weight:700;letter-spacing:-0.02em;
@@ -1367,7 +1375,14 @@ p{margin:0 0 1em}
   letter-spacing:-0.025em;line-height:1.15;margin-bottom:14px;
 }
 .rodape-head p{color:rgba(234,231,228,.7);font-size:1.05rem;line-height:1.6;max-width:480px}
-.rodape-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.rodape-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;margin-bottom:48px}
+.rodape-apoiadores{
+  border-top:1px solid rgba(234,231,228,.1);padding-top:32px;margin-bottom:32px;text-align:center;
+}
+.rodape-apoiadores h5{display:inline-block;margin-bottom:18px}
+.rodape-apoiadores h5::after{left:50%;transform:translateX(-50%)}
+.rodape-apoiadores p.muted{font-size:.85rem;margin-bottom:14px}
+.rodape-apoiadores .rodape-logos{justify-content:center;gap:14px}
 .rodape h5{
   font-family:var(--ff-corpo);font-weight:600;letter-spacing:.16em;text-transform:uppercase;
   color:var(--ouro);font-size:12px;margin-bottom:18px;
@@ -2182,7 +2197,6 @@ FIM DOBRA 2 OCULTA -->
 
     <div class="faq-cta">
       <a href="https://wa.me/5511913735811?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%2012%C2%BA%20Semin%C3%A1rio%20Nacional" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg"><span>Falar com a equipe via WhatsApp</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
-      <p class="muted" style="font-size:.85rem;margin-top:14px">Disponível no rodapé e em pontos de hesitação da página. Para quem tem dúvidas antes de decidir.</p>
     </div>
   </div>
 </section>
@@ -2216,36 +2230,32 @@ FIM DOBRA 2 OCULTA -->
     <div class="rodape-grid">
       <div>
         <h5>Dados de contato</h5>
-        <p><strong style="color:var(--ouro)">WhatsApp:</strong> (11) 91373-5811<br><span class="muted" style="font-size:.85rem">(colocar todos os números)</span></p>
+        <p><strong style="color:var(--ouro)">WhatsApp:</strong><br>
+          <a href="https://wa.me/5511913735811" target="_blank" rel="noopener">(11) 91373-5811</a><br>
+          <a href="https://wa.me/5511919288471" target="_blank" rel="noopener">(11) 91928-8471</a><br>
+          <a href="https://wa.me/5511945068888" target="_blank" rel="noopener">(11) 94506-8888</a>
+        </p>
         <p><strong style="color:var(--ouro)">E-mail:</strong><br>info@mlfconsultoria.com.br<br>mlf@mlfconsultoria.com.br</p>
       </div>
 
       <div>
         <h5>Organização</h5>
+        <p style="margin-bottom:14px">
+          <strong style="color:var(--ouro)">Coordenação técnica:</strong><br>
+          <strong style="color:var(--off-white);font-size:1.05rem">Dra. Martelene Carvalhaes</strong>
+        </p>
+        <p style="margin-bottom:8px"><strong style="color:var(--ouro)">Empresas / Organizações:</strong></p>
         <ul>
-          <li>Coordenação técnica:<br><strong style="color:var(--off-white)">Dra. Martelene Carvalhaes</strong></li>
           <li>MC Editora e Treinamentos</li>
           <li>MLF Consultoria Tributária</li>
           <li>MC Sociedade de Advogados</li>
         </ul>
       </div>
+    </div>
 
-      <div>
-        <h5>Marcas e apoiadores</h5>
-        <p class="muted" style="font-size:.85rem">Logos das marcas</p>
-        <div class="rodape-logos">
-          <div class="logo-slot">[MC EDITORA]</div>
-          <div class="logo-slot">[MLF]</div>
-          <div class="logo-slot">[MC ADV]</div>
-        </div>
-        <p class="muted" style="font-size:.85rem;margin-top:16px">Logos dos apoiadores institucionais</p>
-        <div class="rodape-logos">
-          <div class="logo-slot">[APEOP]</div>
-          <div class="logo-slot">[APeMEC]</div>
-          <div class="logo-slot">[CREA-SP]</div>
-          <div class="logo-slot">[+demais]</div>
-        </div>
-      </div>
+    <div class="rodape-apoiadores">
+      <h5>Marcas e apoiadores</h5>
+      <!-- A SER PREENCHIDO COM AS CONFIRMACOES -->
     </div>
 
     <div class="rodape-bottom">
