@@ -340,6 +340,29 @@ p{margin:0 0 1em}
 @media (prefers-reduced-motion: reduce){
   .hero__tag-unico{animation:none}
 }
+.hero__tag-presencial{
+  position:absolute;
+  top:30px;right:40px;
+  display:block;width:auto;max-width:165px;height:auto;
+  z-index:3;
+  transform-origin:center center;
+  animation:tag-entrance-r 1s cubic-bezier(.2,.7,.2,1.05) both, tag-float-r 6s ease-in-out 1.2s infinite;
+  filter:drop-shadow(0 8px 20px rgba(0,0,0,.35));
+  will-change:transform;
+  pointer-events:none;
+}
+@keyframes tag-entrance-r{
+  0%{opacity:0;transform:scale(.5) rotate(90deg)}
+  60%{opacity:1;transform:scale(1.1) rotate(38deg)}
+  100%{opacity:1;transform:scale(1) rotate(12deg)}
+}
+@keyframes tag-float-r{
+  0%,100%{transform:scale(1) rotate(10deg)}
+  50%{transform:scale(1.05) rotate(14deg)}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero__tag-presencial{animation:none}
+}
 .hero__blob{
   position:absolute;
   top:-15%;right:-15%;
@@ -385,27 +408,31 @@ p{margin:0 0 1em}
   max-width:1100px;
   margin-left:auto;margin-right:auto;
   text-wrap:pretty;
+  text-shadow:0 2px 18px rgba(0,0,0,.45);
 }
 .hero__h2{
-  color:var(--ouro-claro);
+  color:#F4D58A;
   font-family:var(--ff-titulo);
-  font-weight:500;
-  font-size:clamp(.92rem,1.15vw,1.08rem);
+  font-weight:700;
+  font-size:clamp(1rem,1.3vw,1.2rem);
   line-height:1.45;
   letter-spacing:.01em;
   margin:0 auto clamp(8px,1.2vh,14px);
-  max-width:780px;
+  max-width:820px;
   text-wrap:balance;
-  opacity:.92;
+  opacity:1;
+  text-shadow:0 1px 12px rgba(0,0,0,.4);
 }
 .hero__sub{
-  max-width:720px;
+  max-width:760px;
   margin:0 auto clamp(12px,1.8vh,20px);
-  font-size:clamp(.78rem,.92vw,.9rem);
+  font-size:clamp(.84rem,.98vw,.98rem);
   line-height:1.55;
-  color:rgba(234,231,228,.78);
+  color:rgba(255,255,255,.95);
   letter-spacing:.005em;
   font-style:italic;
+  font-weight:500;
+  text-shadow:0 1px 10px rgba(0,0,0,.4);
 }
 .hero__meta{
   display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;
@@ -540,6 +567,13 @@ p{margin:0 0 1em}
   border:3px solid var(--ouro);
 }
 .video-player:hover .video-player__play{transform:scale(1.08)}
+.video-player--real{
+  background:#0b1f28;cursor:default;display:block;
+}
+.video-player__media{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;border-radius:var(--r-xl);
+}
 .video-player__play svg{width:34px;height:34px;margin-left:6px}
 .video-player__caption{
   position:absolute;left:24px;bottom:24px;color:var(--branco);
@@ -551,6 +585,92 @@ p{margin:0 0 1em}
   font-size:1.05rem;line-height:1.8;color:var(--quase-preto);
 }
 .video-cta{text-align:center;margin-top:56px}
+
+/* ============ DOBRA 3 — TREINAMENTO COMPLETO ============ */
+.treino{position:relative;overflow:hidden}
+.treino__wireframe{
+  position:absolute;top:-4%;left:-8%;width:40%;max-width:460px;
+  opacity:.08;color:var(--teal);pointer-events:none;
+}
+.treino .container{position:relative;z-index:1;max-width:1040px}
+.treino__lead{
+  font-family:var(--ff-titulo);font-weight:700;letter-spacing:-0.02em;
+  font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.22;
+  color:var(--azul-profundo);text-align:center;
+  max-width:900px;margin:0 auto 18px;text-wrap:balance;
+}
+.treino__lead .hl{
+  background:linear-gradient(180deg,transparent 62%, rgba(196,154,60,.32) 62%);
+  padding:0 2px;
+}
+.treino__divider{
+  width:80px;height:3px;background:var(--teal);border-radius:2px;
+  margin:0 auto 48px;position:relative;
+}
+.treino__divider::after{
+  content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+  width:24px;height:3px;background:var(--ouro);border-radius:2px;
+}
+.treino-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px;
+}
+.treino-card{
+  background:var(--branco);padding:38px 40px;
+  border-radius:var(--r-lg);border-top-left-radius:48px;
+  box-shadow:var(--shadow-md);position:relative;overflow:hidden;
+  border-top:3px solid var(--teal);
+}
+.treino-card::before{
+  content:"";position:absolute;top:0;left:0;width:3px;height:0;
+  background:var(--ouro);transition:height .3s ease;
+}
+.treino-card:hover::before{height:100%}
+.treino-card__eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:14px;display:flex;align-items:center;gap:10px;
+}
+.treino-card__eyebrow::before{
+  content:"";width:24px;height:2px;background:var(--ouro);display:inline-block;
+}
+.treino-card h3{
+  font-size:clamp(1.15rem,1.7vw,1.35rem);color:var(--azul-profundo);
+  font-weight:700;letter-spacing:-0.015em;line-height:1.3;margin-bottom:14px;
+}
+.treino-card p{
+  font-size:1rem;line-height:1.7;color:var(--quase-preto);margin:0;
+}
+.treino-card p + p{margin-top:14px}
+.treino-card--wide{grid-column:1 / -1;border-top-left-radius:var(--r-lg);border-top-right-radius:48px}
+.treino-card--teal{
+  background:linear-gradient(135deg, var(--teal) 0%, var(--teal-escuro) 55%, var(--azul-profundo) 100%);
+  color:var(--off-white);border-top:3px solid var(--ouro);
+}
+.treino-card--teal h3{color:var(--branco)}
+.treino-card--teal p{color:rgba(234,231,228,.92)}
+.treino-card--teal .treino-card__eyebrow{color:var(--ouro-claro)}
+.treino__pills{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;
+}
+.treino__pill{
+  font-size:12px;font-weight:600;letter-spacing:.04em;
+  padding:8px 16px;border-radius:999px;
+  background:rgba(2,115,140,.08);color:var(--teal);
+  border:1px solid rgba(2,115,140,.18);
+}
+.treino-card--teal .treino__pill{
+  background:rgba(255,255,255,.1);color:var(--off-white);
+  border-color:rgba(196,154,60,.4);
+}
+.treino__close{
+  margin:36px auto 0;max-width:880px;text-align:center;
+  font-family:var(--ff-titulo);font-style:italic;font-weight:500;
+  font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.6;letter-spacing:-0.01em;
+  color:var(--azul-profundo);
+}
+@media (max-width:899px){
+  .treino-grid{grid-template-columns:1fr;gap:20px}
+  .treino-card{padding:30px 26px}
+}
 
 /* ============ FORM CAMADA 2 ============ */
 .lead-block{
@@ -936,6 +1056,87 @@ p{margin:0 0 1em}
   border-left:3px solid var(--teal);
   display:flex;flex-direction:column;gap:18px;
 }
+.palestrantes-row--solo{grid-template-columns:1fr}
+
+/* ============ DOBRA 8 — PALESTRANTES CONFIRMADOS ============ */
+.palestrantes-sec{position:relative;overflow:hidden}
+.palestrantes-sec__wireframe{
+  position:absolute;bottom:-6%;right:-8%;width:38%;max-width:440px;
+  opacity:.08;color:var(--ouro);pointer-events:none;
+}
+.palestrantes-sec .container{position:relative;z-index:1}
+.palestrantes-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:8px;
+}
+.palestrante-card{
+  background:var(--branco);border-radius:var(--r-lg);
+  border-top-left-radius:40px;overflow:hidden;
+  box-shadow:var(--shadow-md);display:flex;flex-direction:column;
+  border-top:3px solid var(--teal);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.palestrante-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.palestrante-card__foto{
+  aspect-ratio:1/1;position:relative;
+  background:linear-gradient(135deg, var(--teal-claro) 0%, var(--teal) 55%, var(--teal-escuro) 100%);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.palestrante-card__foto::after{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 12px, transparent 12px 24px);
+  pointer-events:none;
+}
+.palestrante-card__avatar{
+  width:64px;height:64px;color:rgba(255,255,255,.55);
+  position:relative;z-index:1;
+}
+.palestrante-card__avatar svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.3;fill:none}
+.palestrante-card__ph-tag{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ouro-claro);background:rgba(16,41,50,.55);
+  padding:5px 12px;border-radius:999px;z-index:1;white-space:nowrap;
+}
+.palestrante-card__body{padding:24px 22px 26px;flex:1;display:flex;flex-direction:column}
+.palestrante-card__nome{
+  font-family:var(--ff-titulo);font-weight:700;letter-spacing:-0.015em;
+  font-size:1.1rem;color:var(--azul-profundo);line-height:1.25;margin-bottom:4px;
+}
+.palestrante-card__nome .ph{
+  display:inline-block;width:75%;height:.85em;border-radius:4px;
+  background:linear-gradient(90deg, rgba(2,115,140,.16), rgba(2,115,140,.08));
+}
+.palestrante-card__cargo{
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:16px;
+}
+.palestrante-card__cargo .ph{
+  display:inline-block;width:55%;height:.8em;border-radius:4px;
+  background:rgba(196,154,60,.22);
+}
+.palestrante-card__bio{margin-top:auto}
+.palestrante-card__bio .ph-line{
+  display:block;height:9px;border-radius:4px;margin-bottom:9px;
+  background:linear-gradient(90deg, rgba(16,41,50,.1), rgba(16,41,50,.04));
+}
+.palestrante-card__bio .ph-line:nth-child(1){width:100%}
+.palestrante-card__bio .ph-line:nth-child(2){width:92%}
+.palestrante-card__bio .ph-line:nth-child(3){width:70%;margin-bottom:0}
+.palestrantes-sec__nota{
+  text-align:center;margin:36px auto 0;max-width:640px;
+  font-size:.92rem;color:var(--cinza);font-style:italic;line-height:1.6;
+}
+.palestrantes-sec .faq-cta,
+.palestrantes-cta{text-align:center;margin-top:48px}
+@media (max-width:1100px){
+  .palestrantes-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:820px){
+  .palestrantes-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+}
+@media (max-width:480px){
+  .palestrantes-grid{grid-template-columns:1fr}
+}
 .realiza-org__linha{
   display:flex;align-items:center;gap:24px;
   padding:8px 0;
@@ -1001,11 +1202,40 @@ p{margin:0 0 1em}
 }
 .depoimento-video__play svg{width:26px;height:26px;margin-left:4px}
 .depoimento-video__caption{position:absolute;bottom:22px;left:26px;color:var(--branco);font-family:var(--ff-titulo);font-weight:500;font-style:italic}
+.depoimentos-grid--video{grid-template-columns:1fr 1fr;gap:36px;max-width:980px;margin:0 auto}
+.depoimento-vid{margin:0}
+.depoimento-vid__player{
+  aspect-ratio:16/9;border-radius:var(--r-xl);border-top-left-radius:64px;
+  overflow:hidden;box-shadow:var(--shadow-md);
+  border:1px solid rgba(196,154,60,.3);background:#0b1f28;position:relative;
+}
+.depoimento-vid__player video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+}
+.depoimento-vid__autor{
+  margin-top:18px;font-family:var(--ff-corpo);font-weight:700;font-size:14px;
+  letter-spacing:.06em;color:var(--azul-profundo);text-transform:uppercase;text-align:center;
+}
+.depoimento-vid__autor span{
+  display:block;font-weight:400;color:var(--cinza);text-transform:none;
+  letter-spacing:0;margin-top:4px;font-size:.88rem;
+}
+@media (max-width:768px){
+  .depoimentos-grid--video{grid-template-columns:1fr}
+}
 
 /* ============ MODALIDADES ============ */
 .modalidades-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:36px;
 }
+.vagas-limitadas-tag{
+  display:block;margin:18px auto 0;max-width:230px;width:auto;height:auto;
+  filter:drop-shadow(0 6px 16px rgba(196,154,60,.32));
+  animation:vagas-pulse 2.6s ease-in-out infinite;
+}
+@keyframes vagas-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@media (prefers-reduced-motion: reduce){.vagas-limitadas-tag{animation:none}}
+@media (max-width:768px){.vagas-limitadas-tag{max-width:180px}}
 .dobra8__subtitle{
   font-size:1.1rem;color:var(--teal);font-weight:500;font-style:italic;
   margin:12px auto 0;max-width:640px;letter-spacing:-0.005em;
@@ -1208,16 +1438,16 @@ p{margin:0 0 1em}
 /* Grid de 3 capas reais */
 .bonus-inline__covers{
   display:grid;grid-template-columns:repeat(3,1fr);gap:44px;
-  max-width:1040px;margin:0 auto 36px;align-items:end;
+  max-width:1040px;margin:0 auto 36px;align-items:stretch;justify-items:center;
 }
 .bonus-inline__cover{
   display:flex;flex-direction:column;align-items:center;gap:18px;
-  transition:transform .3s ease;
+  transition:transform .3s ease;width:100%;max-width:300px;
 }
 .bonus-inline__cover:hover{transform:translateY(-4px)}
 .bonus-inline__cover-img{
-  width:100%;max-width:300px;height:auto;display:block;
-  background:transparent;
+  width:100%;max-width:240px;height:300px;object-fit:contain;
+  display:block;margin:0 auto;background:transparent;
   filter:drop-shadow(0 18px 32px rgba(16,41,50,.32)) drop-shadow(0 6px 12px rgba(16,41,50,.16));
 }
 .bonus-inline__cover--left .bonus-inline__cover-img{transform:perspective(900px) rotateY(8deg)}
@@ -1225,7 +1455,8 @@ p{margin:0 0 1em}
 .bonus-inline__cover-label{
   font-family:var(--ff-titulo);font-weight:600;font-size:.85rem;
   letter-spacing:.06em;text-transform:uppercase;color:var(--azul-profundo);
-  text-align:center;line-height:1.4;
+  text-align:center;line-height:1.4;margin-top:auto;
+  display:flex;flex-direction:column;align-items:center;
 }
 .bonus-inline__cover-label .vol{
   display:block;color:var(--ouro);font-weight:700;font-size:.75rem;
@@ -1233,13 +1464,13 @@ p{margin:0 0 1em}
 }
 @media (max-width:900px){
   .bonus-inline__covers{gap:24px;max-width:100%}
-  .bonus-inline__cover-img{max-width:220px}
+  .bonus-inline__cover-img{max-width:200px;height:260px}
 }
 @media (max-width:640px){
   .bonus-inline__covers{
     grid-template-columns:1fr;gap:32px;max-width:320px;
   }
-  .bonus-inline__cover-img{max-width:260px}
+  .bonus-inline__cover-img{max-width:220px;height:280px}
   .bonus-inline__cover-label{font-size:.78rem}
   .bonus-inline__cover--left .bonus-inline__cover-img,
   .bonus-inline__cover--right .bonus-inline__cover-img{transform:none}
@@ -1282,6 +1513,79 @@ p{margin:0 0 1em}
   .bonus-inline__books{width:108px}
 }
 
+
+/* ============ DOBRA 11 — INVESTIMENTO CARDS ============ */
+.invest-cards{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+  max-width:1040px;margin:0 auto;align-items:stretch;
+}
+.invest-card{
+  position:relative;background:var(--branco);
+  border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:var(--shadow-md);
+  display:flex;flex-direction:column;
+  border-top:5px solid var(--teal);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.invest-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.invest-card__top{
+  padding:22px 24px 16px;text-align:center;
+  border-bottom:1px dashed rgba(2,115,140,.18);
+}
+.invest-card__lote{
+  display:block;font-size:11px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--cinza);margin-bottom:4px;
+}
+.invest-card__mes{
+  display:block;font-family:var(--ff-titulo);font-weight:800;
+  font-size:1.5rem;letter-spacing:-0.02em;color:var(--azul-profundo);
+}
+.invest-card__valor{
+  padding:26px 22px 30px;text-align:center;flex:1;
+  display:flex;flex-direction:column;justify-content:center;gap:6px;
+}
+.invest-card__x{
+  font-size:.85rem;font-weight:600;color:var(--cinza);letter-spacing:.02em;
+}
+.invest-card__num{
+  font-family:var(--ff-titulo);font-weight:800;letter-spacing:-0.03em;
+  font-size:clamp(1.7rem,2.4vw,2.3rem);line-height:1.05;color:var(--teal);
+}
+.invest-card__num small{font-size:.5em;font-weight:700;vertical-align:.5em}
+.invest-card__num--sm{font-size:clamp(1.2rem,1.8vw,1.5rem)}
+.invest-card__cond{
+  font-size:.82rem;color:var(--quase-preto);line-height:1.4;margin-top:6px;
+}
+.invest-card__cond sup{color:var(--ouro);font-weight:700}
+.invest-card__flag{
+  position:absolute;top:0;right:0;
+  font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;background:var(--ouro);padding:5px 12px;
+  border-bottom-left-radius:10px;z-index:2;
+}
+/* Cores distintas por lote */
+.invest-card--c1{border-top-color:var(--teal-claro)}
+.invest-card--c1 .invest-card__num{color:var(--teal-claro)}
+.invest-card--c2{border-top-color:var(--teal)}
+.invest-card--c2 .invest-card__num{color:var(--teal)}
+.invest-card--c3{border-top-color:var(--ouro)}
+.invest-card--c3 .invest-card__num{color:var(--ouro)}
+.invest-card--c3 .invest-card__mes{color:var(--ouro)}
+.invest-card--c4{
+  border-top-color:var(--azul-profundo);
+  background:linear-gradient(170deg, var(--azul-profundo) 0%, var(--teal-escuro) 100%);
+}
+.invest-card--c4 .invest-card__lote{color:rgba(234,231,228,.7)}
+.invest-card--c4 .invest-card__mes{color:#fff}
+.invest-card--c4 .invest-card__top{border-bottom-color:rgba(255,255,255,.15)}
+.invest-card--c4 .invest-card__num{color:var(--ouro-claro)}
+.invest-card--c4 .invest-card__cond{color:rgba(234,231,228,.85)}
+@media (max-width:980px){
+  .invest-cards{grid-template-columns:repeat(2,1fr);gap:18px}
+}
+@media (max-width:480px){
+  .invest-cards{grid-template-columns:1fr}
+}
 /* ============ FAQ ============ */
 .faq{max-width:880px;margin:0 auto}
 .faq-item{
@@ -1403,6 +1707,58 @@ p{margin:0 0 1em}
   font-size:.82rem;color:rgba(234,231,228,.45);text-align:center;
 }
 
+
+/* ============ RODAPE V2 (estilo 11) ============ */
+.rodape--v2{padding-top:0}
+.rodape-cta2{
+  text-align:center;max-width:680px;margin:0 auto;
+  padding:56px 0 48px;
+}
+.rodape-cta2 .eyebrow{color:var(--ouro);letter-spacing:.22em;margin-bottom:14px}
+.rodape-cta2 h3{
+  color:var(--branco);font-size:clamp(1.7rem,2.8vw,2.4rem);font-weight:700;
+  letter-spacing:-0.025em;line-height:1.15;margin-bottom:14px;
+}
+.rodape-cta2__sub{color:rgba(234,231,228,.72);font-size:1.05rem;line-height:1.6;margin:0 auto 28px;max-width:520px}
+.rodape-info{
+  border-top:1px solid rgba(234,231,228,.12);
+  border-bottom:1px solid rgba(234,231,228,.12);
+  padding:40px 0;text-align:center;
+}
+.rodape-info__title{
+  color:var(--branco);font-family:var(--ff-titulo);font-weight:700;
+  font-size:clamp(1.1rem,1.8vw,1.4rem);letter-spacing:-0.015em;line-height:1.3;
+  max-width:760px;margin:0 auto 32px;
+}
+.rodape-info__row{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:48px;
+}
+.rodape-info__item{display:flex;align-items:center;gap:14px;text-align:left}
+.rodape-info__icon{
+  width:38px;height:38px;flex-shrink:0;color:var(--ouro);
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(196,154,60,.4);border-radius:50%;
+}
+.rodape-info__icon svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.rodape-info__item div{display:flex;flex-direction:column;line-height:1.3}
+.rodape-info__item strong{color:var(--branco);font-size:1rem;font-weight:700}
+.rodape-info__item span{color:rgba(234,231,228,.6);font-size:.85rem}
+.rodape-org{text-align:center;padding:44px 0 32px}
+.rodape-org__logo img{height:64px;width:auto;margin:0 auto 22px;display:block;filter:brightness(0) invert(1) opacity(.92)}
+.rodape-org__coord{color:rgba(234,231,228,.82);font-size:1rem;margin-bottom:18px}
+.rodape-org__coord strong{color:var(--branco)}
+.rodape-org__contatos{margin-bottom:10px;font-size:.98rem}
+.rodape-org__contatos a{color:rgba(234,231,228,.85)}
+.rodape-org__contatos a:hover{color:var(--ouro-claro)}
+.rodape-org__contatos .sep{color:rgba(196,154,60,.5);margin:0 10px}
+.rodape-org__empresas{color:rgba(234,231,228,.55);font-size:.85rem;margin-top:18px}
+.rodape--v2 .rodape-apoiadores{text-align:center;border-top:1px solid rgba(234,231,228,.1);padding-top:32px;margin-bottom:28px}
+.rodape--v2 .rodape-apoiadores h5{display:inline-block}
+.rodape--v2 .rodape-apoiadores h5::after{left:50%;transform:translateX(-50%)}
+@media (max-width:768px){
+  .rodape-info__row{gap:24px;flex-direction:column;align-items:center}
+  .rodape-org__contatos .sep{display:inline-block;margin:0 6px}
+}
 /* ============ WHATSAPP FLUTUANTE ============ */
 .whats-float{
   position:fixed;right:24px;bottom:24px;z-index:80;
@@ -1422,6 +1778,7 @@ p{margin:0 0 1em}
   .hero__meta__item{font-size:13px}
   .hero__meta__item svg{width:16px;height:16px}
   .hero__tag-unico{max-width:90px;top:14px;left:14px}
+  .hero__tag-presencial{max-width:96px;top:14px;right:14px}
   .lead-grid,.cenario-grid,.modulos-grid,.modalidades-grid,
   .depoimentos-grid,.autoridade-grid,.rodape-grid,.palestrantes-row{grid-template-columns:1fr;gap:36px}
   .credenciais{grid-template-columns:1fr}
@@ -1455,6 +1812,7 @@ p{margin:0 0 1em}
   .hero__sub{font-size:.75rem;line-height:1.5}
   .hero__edition{max-width:280px}
   .hero__tag-unico{max-width:72px;top:10px;left:10px}
+  .hero__tag-presencial{max-width:76px;top:10px;right:10px}
 }
 </style>
 </head>
@@ -1556,6 +1914,7 @@ p{margin:0 0 1em}
   <svg class="hero__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
   <svg class="hero__wireframe hero__wireframe--left" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
   <img class="hero__tag-unico" src="assets/Tag UNICO EVENTO DO BRASIL.png" alt="Único evento do Brasil">
+  <img class="hero__tag-presencial" src="assets/Tag PRESENCIAL E ONLINE.png" alt="Presencial e online">
 
   <div class="container">
     <div class="hero__brand">
@@ -1629,19 +1988,17 @@ p{margin:0 0 1em}
   </div>
 </div>
 
-<!-- ============ CAMADA 1 — VÍDEO ============ -->
-<!-- DOBRA 2 - OCULTA ATE VIDEO PRONTO
+<!-- ============ DOBRA 2 — VÍDEO DE APRESENTAÇÃO ============ -->
 <section class="video-section">
   <div class="container">
     <div class="video-wrap">
       <p class="video-intro">Uma palavra de quem organiza este seminário há mais de uma década, com sucesso.</p>
 
-      <div class="video-player" role="button" aria-label="Reproduzir vídeo da Dra. Martelene">
-        <div class="video-player__label">[PLAYER DE VÍDEO 2-3 min]</div>
-        <div class="video-player__play" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div class="video-player__caption">[FOTO DRA MARTELENE no thumbnail]</div>
+      <div class="video-player video-player--real">
+        <video class="video-player__media" controls preload="metadata" playsinline poster="assets/video-apresentacao-poster.jpg">
+          <source src="assets/video-apresentacao.mp4" type="video/mp4">
+          Seu navegador não suporta a reprodução de vídeo.
+        </video>
       </div>
 
       <p class="video-outro">Desde a primeira edição, o Seminário Nacional existe para fazer o que poucos eventos do setor fazem: como funciona no dia a dia. Não nos contentamos só com a atualização das leis de forma teórica. Trabalhamos os temas com profundidade técnica e prática suficiente para que cada participante saia com clareza sobre o caminho a seguir nos negócios.</p>
@@ -1654,8 +2011,54 @@ p{margin:0 0 1em}
     </div>
   </div>
 </section>
-FIM DOBRA 2 OCULTA -->
 
+
+<!-- ============ DOBRA 3 — UM TREINAMENTO COMPLETO E ESPECIALIZADO ============ -->
+<section class="section section--cream treino">
+  <svg class="treino__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+  <div class="container">
+    <p class="treino__lead">O 12º Seminário Nacional é um treinamento completo e especializado com o objetivo de <span class="hl">segurança jurídica, planejamento tributário e implantação da reforma tributária</span>.</p>
+    <div class="treino__divider"></div>
+
+    <div class="treino-grid">
+      <article class="treino-card treino-card--wide">
+        <span class="treino-card__eyebrow">Foco exclusivo</span>
+        <h3>Setor imobiliário e da construção, com abordagem prática</h3>
+        <p>Este evento é focado exclusivamente no setor imobiliário e da construção com abordagem prática sobre estruturação de negócios, tributação, contratos, RET e SPE e SCP, Patrimônio de Afetação e os impactos da reforma tributária. Sempre voltado para estruturas jurídicas seguras para gestão de riscos e análise de carga tributária. Aquisição de terrenos, permutas, empreitadas e estratégias de redução legal de tributação e novas regras da reforma. Trazendo ainda as vantagens da construção off site, o IA e a contratação da mão de obra.</p>
+        <p>Pela complexidade das mudanças atuais, os treinamentos que unem tributação, jurídico, contabilidade e estruturação de negócios geram mais resultado do que cursos focados apenas na reforma tributária.</p>
+      </article>
+
+      <article class="treino-card">
+        <span class="treino-card__eyebrow">Para quem é</span>
+        <h3>Atualização estratégica</h3>
+        <p>Atualização estratégica para diretores, incorporadores, construtores e gestores, mas também para advogados e contadores. Com tributação operacional e prevenção de autuações.</p>
+        <div class="treino__pills">
+          <span class="treino__pill">Diretores</span>
+          <span class="treino__pill">Incorporadores</span>
+          <span class="treino__pill">Construtores</span>
+          <span class="treino__pill">Gestores</span>
+          <span class="treino__pill">Advogados</span>
+          <span class="treino__pill">Contadores</span>
+        </div>
+      </article>
+
+      <article class="treino-card">
+        <span class="treino-card__eyebrow">Referência do setor</span>
+        <h3>Um dos eventos mais importantes e técnicos</h3>
+        <p>O Seminário Nacional de Tributação e Legislação da Construção Civil é considerado um dos eventos mais importantes e técnicos do setor. As edições recentes têm sido fundamentais para atualizar os profissionais principalmente devido aos desafios e impactos práticos pela Reforma Tributária e as alterações na Lei de Incorporação de Loteamento do Código Civil.</p>
+      </article>
+
+      <article class="treino-card treino-card--wide treino-card--teal">
+        <span class="treino-card__eyebrow">Por que participar</span>
+        <h3>Avaliações do público técnico e coordenação especializada</h3>
+        <p>O evento tem recebido excelentes avaliações do público técnico por abordar temas vitais com profundidade, tais como: jurisprudência recente, atualização legislativa, visão prática e objetiva. O evento é coordenado pela especialista advogada tributarista Martelene Carvalhaes que se destaca por traduzir leis complexas em planejamento de negócios e compliance fiscal para as empresas.</p>
+        <p>Acompanhar essas discussões é considerado indispensável para evitar riscos milionários de autuações e transformar as novas regras tributárias em vantagem competitiva. Você pode conferir os detalhes e módulos no próximo evento que já está na sua 12ª edição.</p>
+      </article>
+    </div>
+
+    <p class="treino__close">É um evento que gera conteúdo muito mais estratégico para diretores, advogados, contadores, incorporadores e construtores, com público limitado para maior aproveitamento de temas técnicos, jurídicos, tributários e contábeis.</p>
+  </div>
+</section>
 
 <!-- ============ CAMADA 2 — FORM PROGRAMAÇÃO ============ -->
 <section class="lead-block" id="programacao-form">
@@ -1666,7 +2069,7 @@ FIM DOBRA 2 OCULTA -->
     <div class="lead-grid">
       <div>
         <h2>Receba a programação completa do 12º Seminário Nacional</h2>
-        <p>Conteúdo técnico dos 4 módulos e informações detalhadas do único seminário especializado em tributação e legislação da construção civil realizado sem interrupção há mais de 10 anos por quem mais entende do assunto. Preencha o formulário e receba no seu e-mail em instantes.</p>
+        <p>Conteúdo técnico dos 4 módulos e informações detalhadas do único seminário especializado em tributação e legislação da construção civil realizado sem interrupção há mais de 10 anos por quem mais entende do assunto. Preencha o formulário e receba no seu e-mail.</p>
       </div>
 
       <form class="form-card" onsubmit="event.preventDefault(); alert('Formulário de demonstração do preview.');">
@@ -1891,12 +2294,7 @@ FIM DOBRA 2 OCULTA -->
         </li>
       </ul>
 
-      <div class="palestrantes-row">
-        <div class="palestrantes">
-          <h4>Palestrantes convidados</h4>
-          <p>Os especialistas convidados para as sessões técnicas serão divulgados a partir de julho de 2026.</p>
-        </div>
-
+      <div class="palestrantes-row palestrantes-row--solo">
         <div class="realiza-org">
           <div class="realiza-org__linha">
             <span class="realiza-org__label">Realização:</span>
@@ -1918,6 +2316,155 @@ FIM DOBRA 2 OCULTA -->
 </section>
 
 <!-- ============ CTA TERCIARIO REPETIDO ============ -->
+<!-- ============ DOBRA 8 — PALESTRANTES CONFIRMADOS ============ -->
+<section class="section section--cream palestrantes-sec">
+  <svg class="palestrantes-sec__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
+  <div class="container">
+    <div style="text-align:center;max-width:820px;margin:0 auto 56px">
+      <p class="eyebrow eyebrow--gold">Palestrantes confirmados</p>
+      <h2>Aprenda com quem realmente entende do assunto.</h2>
+      <div class="divider divider--center"></div>
+      <p class="muted" style="font-size:1rem">Especialistas convidados para as sessões técnicas do 12º Seminário Nacional.</p>
+    </div>
+
+    <div class="palestrantes-grid">
+      <article class="palestrante-card">
+        <div class="palestrante-card__foto">
+          <span class="palestrante-card__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="13"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18"/></svg>
+          </span>
+          <span class="palestrante-card__ph-tag">Em breve</span>
+        </div>
+        <div class="palestrante-card__body">
+          <div class="palestrante-card__nome"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__cargo"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__bio" aria-hidden="true">
+            <span class="ph-line"></span><span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="palestrante-card">
+        <div class="palestrante-card__foto">
+          <span class="palestrante-card__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="13"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18"/></svg>
+          </span>
+          <span class="palestrante-card__ph-tag">Em breve</span>
+        </div>
+        <div class="palestrante-card__body">
+          <div class="palestrante-card__nome"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__cargo"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__bio" aria-hidden="true">
+            <span class="ph-line"></span><span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="palestrante-card">
+        <div class="palestrante-card__foto">
+          <span class="palestrante-card__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="13"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18"/></svg>
+          </span>
+          <span class="palestrante-card__ph-tag">Em breve</span>
+        </div>
+        <div class="palestrante-card__body">
+          <div class="palestrante-card__nome"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__cargo"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__bio" aria-hidden="true">
+            <span class="ph-line"></span><span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="palestrante-card">
+        <div class="palestrante-card__foto">
+          <span class="palestrante-card__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="13"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18"/></svg>
+          </span>
+          <span class="palestrante-card__ph-tag">Em breve</span>
+        </div>
+        <div class="palestrante-card__body">
+          <div class="palestrante-card__nome"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__cargo"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__bio" aria-hidden="true">
+            <span class="ph-line"></span><span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="palestrante-card">
+        <div class="palestrante-card__foto">
+          <span class="palestrante-card__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="13"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18"/></svg>
+          </span>
+          <span class="palestrante-card__ph-tag">Em breve</span>
+        </div>
+        <div class="palestrante-card__body">
+          <div class="palestrante-card__nome"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__cargo"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__bio" aria-hidden="true">
+            <span class="ph-line"></span><span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="palestrante-card">
+        <div class="palestrante-card__foto">
+          <span class="palestrante-card__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="13"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18"/></svg>
+          </span>
+          <span class="palestrante-card__ph-tag">Em breve</span>
+        </div>
+        <div class="palestrante-card__body">
+          <div class="palestrante-card__nome"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__cargo"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__bio" aria-hidden="true">
+            <span class="ph-line"></span><span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="palestrante-card">
+        <div class="palestrante-card__foto">
+          <span class="palestrante-card__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="13"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18"/></svg>
+          </span>
+          <span class="palestrante-card__ph-tag">Em breve</span>
+        </div>
+        <div class="palestrante-card__body">
+          <div class="palestrante-card__nome"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__cargo"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__bio" aria-hidden="true">
+            <span class="ph-line"></span><span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="palestrante-card">
+        <div class="palestrante-card__foto">
+          <span class="palestrante-card__avatar" aria-hidden="true">
+            <svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="13"/><path d="M12 56c0-11 9-18 20-18s20 7 20 18"/></svg>
+          </span>
+          <span class="palestrante-card__ph-tag">Em breve</span>
+        </div>
+        <div class="palestrante-card__body">
+          <div class="palestrante-card__nome"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__cargo"><span class="ph" aria-hidden="true"></span></div>
+          <div class="palestrante-card__bio" aria-hidden="true">
+            <span class="ph-line"></span><span class="ph-line"></span><span class="ph-line"></span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="palestrantes-sec__nota">Os nomes e mini-currículos dos palestrantes convidados serão divulgados a partir de julho de 2026.</p>
+
+    <div class="palestrantes-cta">
+      <a href="#reserva-form" class="btn btn--teal btn--lg"><span>QUERO APRENDER COM OS MELHORES</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <section class="cta-reserva cta-reserva--bg-3">
   <div class="cta-reserva__bg" aria-hidden="true"></div>
   <div class="container">
@@ -1937,26 +2484,26 @@ FIM DOBRA 2 OCULTA -->
       <div class="divider divider--center"></div>
     </div>
 
-    <div class="depoimentos-grid">
-      <div class="depoimento-card">
-        <p>[Texto do depoimento — a inserir quando disponível. Priorizar depoimentos de perfis que representem o público-alvo: construtores, incorporadores, advogados, contadores.]</p>
-        <div class="autor">Nome do participante<span>Cargo &middot; Empresa &middot; Cidade &middot; Participante de edição XX</span></div>
-      </div>
+    <div class="depoimentos-grid depoimentos-grid--video">
+      <figure class="depoimento-vid">
+        <div class="depoimento-vid__player">
+          <video controls preload="metadata" playsinline poster="assets/depoimento-1-felipe-poster.jpg">
+            <source src="assets/depoimento-1-felipe.mp4" type="video/mp4">
+            Seu navegador não suporta a reprodução de vídeo.
+          </video>
+        </div>
+        <figcaption class="depoimento-vid__autor">Felipe Bergamaschi<span>Advogado</span></figcaption>
+      </figure>
 
-      <div class="depoimento-card">
-        <p>[Texto do depoimento — a inserir quando disponível.]</p>
-        <div class="autor">Nome do participante<span>Cargo &middot; Empresa &middot; Cidade &middot; Participante de edição XX</span></div>
-      </div>
-
-      <div class="depoimento-video" role="button" aria-label="Reproduzir depoimento em vídeo">
-        <div class="depoimento-video__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="depoimento-video__caption">Vídeo depoimento</div>
-      </div>
-
-      <div class="depoimento-video" role="button" aria-label="Reproduzir depoimento em vídeo">
-        <div class="depoimento-video__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="depoimento-video__caption">Vídeo depoimento</div>
-      </div>
+      <figure class="depoimento-vid">
+        <div class="depoimento-vid__player">
+          <video controls preload="metadata" playsinline poster="assets/depoimento-2-anderson-poster.jpg">
+            <source src="assets/depoimento-2-anderson.mp4" type="video/mp4">
+            Seu navegador não suporta a reprodução de vídeo.
+          </video>
+        </div>
+        <figcaption class="depoimento-vid__autor">Anderson Lúcio da Silva<span>Agiliza Construtora</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -1979,12 +2526,12 @@ FIM DOBRA 2 OCULTA -->
     <div style="text-align:center;max-width:780px;margin:0 auto 64px">
       <h2>Tudo o que está incluído na sua inscrição.</h2>
       <p class="dobra8__subtitle">O conteúdo é o mesmo, o ambiente é diferente.</p>
+      <img src="assets/Tag VAGAS LIMITADAS.png" alt="Vagas limitadas" class="vagas-limitadas-tag">
       <div class="divider divider--center"></div>
     </div>
 
     <div class="modalidades-grid">
       <article class="modalidade-card modalidade-card--gold">
-        <img src="assets/Tag VAGAS LIMITADAS.png" alt="Vagas limitadas" class="modalidade-card__tag">
         <h3>Modalidade Presencial</h3>
         <div class="sub">São Paulo</div>
         <ul>
@@ -2039,27 +2586,55 @@ FIM DOBRA 2 OCULTA -->
       <p>O investimento é escalonado por período de inscrição, facilitando o parcelamento.</p>
     </div>
 
-    <div class="tabela-invest">
-      <div class="tabela-invest__head">
-        <h3>Tabela de Investimento &middot; 12º Seminário Nacional</h3>
-        <span>Quanto antes, menor</span>
-      </div>
-      <div class="tabela-row">
-        <div class="tabela-row__periodo">Julho</div>
-        <div class="tabela-row__valor">4 parcelas de R$ 1.300,00 no boleto/PIX ou parcelamento no cartão de crédito <sup>(*)</sup></div>
-      </div>
-      <div class="tabela-row">
-        <div class="tabela-row__periodo">Agosto</div>
-        <div class="tabela-row__valor">3 parcelas de R$ 1.750,00 no boleto/PIX ou parcelamento no cartão de crédito <sup>(*)</sup></div>
-      </div>
-      <div class="tabela-row">
-        <div class="tabela-row__periodo">Setembro</div>
-        <div class="tabela-row__valor">2 parcelas de R$ 2.600,00 no boleto/PIX ou parcelamento no cartão de crédito <sup>(*)</sup></div>
-      </div>
-      <div class="tabela-row">
-        <div class="tabela-row__periodo">Outubro</div>
-        <div class="tabela-row__valor">À vista no cartão de crédito <sup>(*)</sup></div>
-      </div>
+    <div class="invest-cards">
+      <article class="invest-card invest-card--c1">
+        <div class="invest-card__top">
+          <span class="invest-card__lote">1º Lote</span>
+          <span class="invest-card__mes">Julho</span>
+        </div>
+        <div class="invest-card__valor">
+          <span class="invest-card__x">4x de</span>
+          <span class="invest-card__num">R$ 1.300<small>,00</small></span>
+          <span class="invest-card__cond">no boleto/PIX ou cartão <sup>(*)</sup></span>
+        </div>
+      </article>
+
+      <article class="invest-card invest-card--c2">
+        <div class="invest-card__top">
+          <span class="invest-card__lote">2º Lote</span>
+          <span class="invest-card__mes">Agosto</span>
+        </div>
+        <div class="invest-card__valor">
+          <span class="invest-card__x">3x de</span>
+          <span class="invest-card__num">R$ 1.750<small>,00</small></span>
+          <span class="invest-card__cond">no boleto/PIX ou cartão <sup>(*)</sup></span>
+        </div>
+      </article>
+
+      <article class="invest-card invest-card--c3">
+        <div class="invest-card__top">
+          <span class="invest-card__lote">3º Lote</span>
+          <span class="invest-card__mes">Setembro</span>
+        </div>
+        <div class="invest-card__valor">
+          <span class="invest-card__x">2x de</span>
+          <span class="invest-card__num">R$ 2.600<small>,00</small></span>
+          <span class="invest-card__cond">no boleto/PIX ou cartão <sup>(*)</sup></span>
+        </div>
+      </article>
+
+      <article class="invest-card invest-card--c4">
+        <span class="invest-card__flag">Última chamada</span>
+        <div class="invest-card__top">
+          <span class="invest-card__lote">4º Lote</span>
+          <span class="invest-card__mes">Outubro</span>
+        </div>
+        <div class="invest-card__valor">
+          <span class="invest-card__x">&nbsp;</span>
+          <span class="invest-card__num invest-card__num--sm">À vista no cartão</span>
+          <span class="invest-card__cond">de crédito <sup>(*)</sup></span>
+        </div>
+      </article>
     </div>
     <p class="tabela-invest__nota"><em>(*) Parcelamento em até 2x no cartão de crédito sem juros ou em até 18x com juros da operadora.</em></p>
 
@@ -2211,51 +2786,59 @@ FIM DOBRA 2 OCULTA -->
 </section></div>
 
 <!-- ============ RODAPÉ ============ -->
-<footer class="rodape">
+<footer class="rodape rodape--v2">
   <div class="rodape__blob"></div>
   <svg class="rodape__wireframe" aria-hidden="true"><use href="#wireframe-skyline"/></svg>
 
   <div class="container">
-    <div class="rodape-head">
-      <div class="rodape-head__text">
-        <p class="eyebrow">Contatos</p>
-        <h3>Dúvidas? Fale com nossa equipe.</h3>
-        <p>Disponível por WhatsApp e e-mail para quem precisa de informações antes de decidir.</p>
-      </div>
-      <div class="rodape-head__cta">
-        <a href="https://wa.me/5511913735811" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg"><span>Falar com a equipe via WhatsApp</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    <div class="rodape-cta2">
+      <p class="eyebrow">Contatos</p>
+      <h3>Dúvidas? Fale com nossa equipe.</h3>
+      <p class="rodape-cta2__sub">Disponível por WhatsApp e e-mail para quem precisa de informações antes de decidir.</p>
+      <a href="https://wa.me/5511913735811" target="_blank" rel="noopener" class="btn btn--whatsapp btn--lg"><span>Falar com a equipe via WhatsApp</span><svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
+    </div>
+
+    <div class="rodape-info">
+      <h4 class="rodape-info__title">12º Seminário Nacional de Tributação e Legislação da Construção Civil</h4>
+      <div class="rodape-info__row">
+        <div class="rodape-info__item">
+          <span class="rodape-info__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></span>
+          <div><strong>22 e 23 de outubro</strong><span>de 2026</span></div>
+        </div>
+        <div class="rodape-info__item">
+          <span class="rodape-info__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-7.5-7-12a7 7 0 0 1 14 0c0 4.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+          <div><strong>São Paulo</strong><span>Presencial e Online</span></div>
+        </div>
+        <div class="rodape-info__item">
+          <span class="rodape-info__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+          <div><strong>Formato Híbrido</strong><span>Ao vivo + gravação</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="rodape-grid">
-      <div>
-        <h5>Dados de contato</h5>
-        <p><strong style="color:var(--ouro)">WhatsApp:</strong><br>
-          <a href="https://wa.me/5511913735811" target="_blank" rel="noopener">(11) 91373-5811</a><br>
-          <a href="https://wa.me/5511919288471" target="_blank" rel="noopener">(11) 91928-8471</a><br>
-          <a href="https://wa.me/5511945068888" target="_blank" rel="noopener">(11) 94506-8888</a>
-        </p>
-        <p><strong style="color:var(--ouro)">E-mail:</strong><br>info@mlfconsultoria.com.br<br>mlf@mlfconsultoria.com.br</p>
+    <div class="rodape-org">
+      <div class="rodape-org__logo">
+        <img src="assets/Logo_MC_Editora.png" alt="MC Editora e Treinamentos">
       </div>
-
-      <div>
-        <h5>Organização</h5>
-        <p style="margin-bottom:14px">
-          <strong style="color:var(--ouro)">Coordenação técnica:</strong><br>
-          <strong style="color:var(--off-white);font-size:1.05rem">Dra. Martelene Carvalhaes</strong>
-        </p>
-        <p style="margin-bottom:8px"><strong style="color:var(--ouro)">Empresas / Organizações:</strong></p>
-        <ul>
-          <li>MC Editora e Treinamentos</li>
-          <li>MLF Consultoria Tributária</li>
-          <li>MC Sociedade de Advogados</li>
-        </ul>
-      </div>
+      <p class="rodape-org__coord">Organização e coordenação técnica: <strong>Dra. Martelene Carvalhaes</strong></p>
+      <p class="rodape-org__contatos">
+        <a href="https://wa.me/5511913735811" target="_blank" rel="noopener">(11) 91373-5811</a>
+        <span class="sep">|</span>
+        <a href="https://wa.me/5511919288471" target="_blank" rel="noopener">(11) 91928-8471</a>
+        <span class="sep">|</span>
+        <a href="https://wa.me/5511945068888" target="_blank" rel="noopener">(11) 94506-8888</a>
+      </p>
+      <p class="rodape-org__contatos">
+        <a href="mailto:info@mlfconsultoria.com.br">info@mlfconsultoria.com.br</a>
+        <span class="sep">|</span>
+        <a href="mailto:mlf@mlfconsultoria.com.br">mlf@mlfconsultoria.com.br</a>
+      </p>
+      <p class="rodape-org__empresas">MC Editora e Treinamentos &middot; MLF Consultoria Tributária &middot; MC Sociedade de Advogados</p>
     </div>
 
     <div class="rodape-apoiadores">
-      <h5>Marcas e apoiadores</h5>
-      <!-- A SER PREENCHIDO COM AS CONFIRMACOES -->
+      <h5>Apoio institucional</h5>
+      <p class="muted">As marcas e apoiadores institucionais serão divulgados em breve.</p>
     </div>
 
     <div class="rodape-bottom">
